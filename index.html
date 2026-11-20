@@ -1340,11 +1340,11 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 .rts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.rt{width:auto}
 .lk-d .t-home .rts{gap:12px}
 .lk-d .t-home .rti{width:100%;max-width:96px;height:auto;aspect-ratio:1/1;font-size:36px}
-.lk-d .t-home .care{--sand:#FBF3DC}
+.lk-d .t-home .care{--sand:rgba(255,247,187,.5)}
 .lk-d .t-home .cct,.lk-d .t-home .ccgo{position:relative}
 .lk-d .t-home .cc{background:var(--sand)}
 .lk-d .t-home .cc::before{background:#fff;opacity:.4}
-:root{--k-n-bg:#FBF3DC;--k-n-ln:#E6CC82;--k-n-lb:#8C7230;--k-n-sb:#978962}
+:root{--k-n-bg:rgba(255,247,187,.4);--k-n-ln:#E6CC82;--k-n-lb:#8C7230;--k-n-sb:#978962}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--k-n-bg:#2e2719;--k-n-lb:#d8c3a0;--k-n-sb:#c4b8a4}}
 :root[data-theme="dark"]{--k-n-bg:#2e2719;--k-n-lb:#d8c3a0;--k-n-sb:#c4b8a4}
 .cvc.n{--k-bg:var(--k-n-bg);--k-ln:var(--k-n-ln);--k-lb:var(--k-n-lb);--k-sb:var(--k-n-sb)}
@@ -1526,28 +1526,24 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 .phone:not(.lk-d) .focus .col .tile:nth-child(n) .v.add{color:var(--ac)}
 /* карточка лекарства и события шторкой (D-157) */
 .lk-d .sheet .recin{background:transparent;padding:0}
-/* «Имена» на низком экране (nmFit): компактные кнопки «Подобрать / Все имена» в одну строку */
-.nmcmp .nmgo button{min-height:0!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;padding:9px 12px!important}
-.nmcmp .nmgo .ic0{width:34px!important;height:34px!important;font-size:17px!important}
-.nmcmp .nmgo .on::after,.nmcmp .nmgo .on::before{display:none}
-.nmcmp .nmhead .h2{font-size:24px}
-.nmcmp .nmpb .nmdeck{min-height:0}
-.nmtight .nmc{padding:14px 16px!important}.nmtight .nmc h3{font-size:28px!important;margin:6px 0 2px!important}.nmtight .nmc .nmstr{margin:0 0 6px!important}.nmtight .nmpb .nmmore{padding-top:8px}.nmtight .nmc .nmacts{margin-top:10px;padding-top:10px}
+.nmpb .nmdeck{min-height:0}
+.nmtight .nmc{padding:12px 16px!important}.nmtight .nmc h3{font-size:26px!important;margin:4px 0 2px!important}.nmtight .nmc .nmstr{margin:0 0 4px!important}.nmtight .nmpb .nmmore{padding-top:6px}.nmtight .nmc .nmacts{margin-top:8px;padding-top:8px}
+.nmtight2 .nmc h3{font-size:24px!important;margin:2px 0 2px!important}.nmtight2 .nmc .nmmean{font-size:13px;line-height:1.3}.nmtight2 .nmc .nmacts{margin-top:6px;padding-top:6px}.nmtight2 .nmc{padding-top:10px!important;padding-bottom:10px!important}
 .recnone{margin:6px 0 4px;padding:10px 12px;border-radius:12px;border:1px dashed var(--bd);font-size:13px;color:var(--t2)}
 .lk-d .recnone{background:var(--h-soft);border-color:var(--h-ring);color:var(--h-sub)}
 .sheet.cardsh{max-height:92%}
 .lk-d .sheet [data-n].cardin{background:transparent;padding:0}
 .cardin .acts{margin-top:16px}
 /* Чекап: подсказка про «+» внизу (D-156) */
-.lk-d .calpal .cph,.lk-d .chkhint .cph{opacity:.7;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.lk-d .calpal .cph,.lk-d .chkhint .cph{opacity:var(--tipop);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .lk-d .t-chk .chkhint{margin-top:16px;margin-bottom:-4px;text-align:center}
-.lk-d .t-chk .chkhint .cpt{font-size:13px;line-height:1.4;color:var(--h-sub);opacity:.7;margin:0 22px;text-wrap:balance}
+.lk-d .t-chk .chkhint .cpt{font-size:13px;line-height:1.4;color:var(--h-sub);opacity:var(--tipop);margin:0 22px;text-wrap:balance}
 .lk-d .t-chk .chkhint .cph{font-size:12px;color:var(--g-ac);padding:3px 10px}
 .lk-d .t-chk .chkhint .carr{display:block;width:24px;height:40px;margin:2px auto 0}
 /* Календарь: компаньоны в пустом месте (D-154) */
 .lk-d .calt .cvl{display:flex;flex-direction:column}
 .lk-d .calt .calpal{margin-top:auto;margin-bottom:-4px;padding-top:10px;text-align:center}
-.lk-d .calt .calpal .cpt{font-size:13px;line-height:1.4;color:var(--h-sub);opacity:.7;margin:0 18px;text-wrap:balance}
+.lk-d .calt .calpal .cpt{font-size:13px;line-height:1.4;color:var(--h-sub);opacity:var(--tipop);margin:0 18px;text-wrap:balance}
 .lk-d .calt .calpal .cph{font-size:12px;color:var(--g-ac);padding:3px 10px;margin:0}
 .lk-d .calt .calpal .cpa{line-height:0;cursor:pointer}
 .lk-d .calt .calpal .cpa svg{width:100%;height:auto;display:block}
@@ -1581,6 +1577,42 @@ select.in{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 /* подписи над полями — того же размера и цвета, что пояснительный текст экрана (D-163) */
 .lk-d .f label{color:var(--h-sub);font-size:12px;line-height:1.4;margin-bottom:5px}
 :is([data-n],.sheet):has(.f) .banner{font-size:12px!important}
+
+/* подсказки про «+» в Календаре и Чекапе: бледнее, в тёмной теме ещё бледнее (D-168) */
+:root{--tipop:.55}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--tipop:.4}}
+:root[data-theme="dark"]{--tipop:.4}
+/* Календарь: название и подпись в одну строку с «…», справа текст кончается на том же расстоянии от края, что слева (D-169) */
+.cvc .tx{padding-right:20px}
+.lk-d .calt .cvc .tx{padding-right:16px}
+.cvl.cmp .cvc .tx{padding-right:16px}
+.lk-d .calt .cvl.cmp .cvc .tx{padding-right:12px}
+
+/* Чекап (D-170): название максимум в две строки, все плашки высотой как плашка с двумя строками */
+.rc .rn{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.25}
+.rc .fl{margin-right:2px}
+.lk-d .t-chk .rc{min-height:84px}
+.phone:not(.lk-d) .t-chk .rc{min-height:69px}
+/* Чекап (D-174): белые плашки с лёгкой тенью, отделяются от зелёных вкладок, списков и картинки; тип — цветной бледный кружок значка */
+.lk-d .t-chk .rc{background:var(--h-card)!important;box-shadow:0 2px 10px rgba(46,58,43,.07),0 0 0 1px rgba(46,58,43,.06)!important}
+.lk-d .t-chk .rc .ico.blue{background:var(--k-p-bg)!important}
+.lk-d .t-chk .rc .ico:is(.violet,.orange){background:var(--k-v-bg)!important}
+.lk-d .t-chk .rc .ico.green{background:var(--k-b-bg)!important}
+.lk-d .t-chk .rc .dt{background:rgba(120,120,110,.1)!important}
+
+/* D-175…D-179 (20.11): «Фокус дня» в стиле «Активностей», кнопки «Активностей» во всю ширину. Только «Мой дизайн» */
+.lk-d .t-home .focus .col .tile:nth-child(n){border-radius:26px;padding:14px}
+.lk-d .t-home .focus .tile::before{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:var(--h-card);opacity:.45;pointer-events:none}
+.lk-d .t-home .focus .col:first-child .tile:nth-child(even)::before,.lk-d .t-home .focus .col:last-child .tile:nth-child(odd)::before{background:var(--k-g-bg);opacity:.7}
+.lk-d .t-home .focus .tile>span:not(.tic){position:relative}
+.lk-d .t-home .focus .col .tile:nth-child(n) .tic{width:36px;height:36px;top:10px;right:10px;border-radius:50%!important;background:var(--h-card)!important}
+.lk-d .t-home .focus .col .tile:nth-child(n) .v:not(.add){font-size:22px!important;font-weight:600}
+.lk-d .t-home .focus .tile .v .vu{font-size:15px;font-weight:500}
+.lk-d .t-home .focus .col .tile:nth-child(n) .v.add{display:flex!important;width:auto!important;justify-content:space-between!important;font-weight:500!important;padding:7px 10px 7px 14px!important;background:var(--h-card)!important}
+.lk-d .t-home .focus .col:first-child .tile:nth-child(even) .v.add,.lk-d .t-home .focus .col:last-child .tile:nth-child(odd) .v.add{background:var(--k-g-bg)!important}
+.lk-d .t-home .cc .ccgo{align-self:stretch;display:flex;align-items:center;justify-content:space-between;font-weight:500;padding:7px 10px 7px 14px}
+.focus .tile .s{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.err.mf{background:color-mix(in srgb,var(--wb) 22%,transparent);border:1px solid color-mix(in srgb,var(--wf) 28%,transparent);box-sizing:border-box;height:48px;display:flex;align-items:center;padding:0 14px;margin:0 0 8px}
 </style>
 <div class="stage">
 <aside class="side"><h1>Беремняшки</h1><p>Кликабельный прототип. Все данные и документы вымышленные. Камера и распознавание имитируются, напоминания не приходят.</p><p>Обновление страницы начинает всё сначала.</p><p>В «Моём дизайне» пока в прежнем виде: первый вход, просмотр оригинала и камера.</p><p style="margin-top:18px">Вид прототипа:</p><div style="display:flex;gap:6px"><button type="button" class="ghost lkb" data-l="d" style="margin:0">Мой дизайн</button><button type="button" class="ghost lkb" data-l="s" style="margin:0">Простой стиль</button></div><button type="button" class="ghost" id="reset" style="margin-top:12px">Начать сначала</button></aside>
@@ -1697,7 +1729,7 @@ function fresh(){return {nm:{fav:['Мирон','Софья'],no:[],own:[]},
   {id:'r6',k:'lab',d:'2026-10-20',n:'Общий анализ мочи',f:1,note:''},
   {id:'r1',k:'lab',d:'2026-10-14',n:'Общий анализ крови',clinic:'Клиника «Здоровье»',addr:'ул. Садовая, 12',f:2,note:''},
   {id:'r2',k:'lab',d:'2026-10-12',n:'Ферритин и железо',clinic:'Клиника «Здоровье»',addr:'ул. Садовая, 12',f:1,note:''},
-  {id:'r3',k:'uzi',d:'2026-09-28',n:'УЗИ, скрининг I триместра',doctor:'Смирнова О. П.',clinic:'Центр «Мать и дитя»',addr:'пр. Мира, 40',f:3,note:''},
+  {id:'r3',k:'diag',d:'2026-09-28',n:'УЗИ, скрининг I триместра',doctor:'Смирнова О. П.',clinic:'Центр «Мать и дитя»',addr:'пр. Мира, 40',f:3,note:''},
   {id:'r4',k:'diag',d:'2026-09-11',n:'ЭКГ',clinic:'Клиника «Здоровье»',addr:'ул. Садовая, 12',f:1,note:''},
   {id:'r5',k:'lab',d:'2026-09-05',n:'Общий анализ крови',clinic:'Клиника «Здоровье»',addr:'ул. Садовая, 12',f:1,note:''},
   {id:'c1',k:'doc',spec:'Гинеколог',d:'2026-10-22',n:'Приём гинеколога',doctor:'Иванова А. С.',clinic:'Клиника «Здоровье»',addr:'ул. Садовая, 12',f:1,note:''},
@@ -1754,12 +1786,12 @@ function render(){
  ctFit();sgFit();palFit();chkHintFit();nmFit();if(window.requestAnimationFrame)requestAnimationFrame(function(){sgFit();palFit();chkHintFit();nmFit()});
  if(phone.querySelector('[data-n=sg] .sgfill'))[300,1000,2500].forEach(function(t){setTimeout(sgFit,t)}); /* страховка: пересчитать, когда всё догрузится */
 }
-/* «Имена»: карточка имени целиком помещается на экране — на низких экранах шапка компактнее, второстепенное прячется (оно есть в «Подробнее об имени») */
+/* «Имена»: карточка имени целиком помещается на экране — второстепенное внутри карточки прячется (шапку не трогаем) (оно есть в «Подробнее об имени») */
 function nmFit(){var s=phone.querySelector('[data-n=nm]');if(!s)return;var pb=s.querySelector('.nmpb');
- s.classList.remove('nmcmp','nmtight');[].forEach.call(s.querySelectorAll('[data-nmfit]'),function(e){e.style.display='';e.removeAttribute('data-nmfit')});
+ s.classList.remove('nmtight','nmtight2');[].forEach.call(s.querySelectorAll('[data-nmfit]'),function(e){e.style.display='';e.removeAttribute('data-nmfit')});
  if(!pb)return;function ok(){return pb.scrollHeight<=pb.clientHeight+1}
  function hide(sel,lab){var e=s.querySelector('.nmpb .nmc:not(.nmbk) '+sel)||s.querySelector('.nmpb '+sel);if(!e)return;var l=lab&&e.previousElementSibling;[e,l].forEach(function(x,j){if(x){x.style.display='none';x.setAttribute('data-nmfit',j?'lab':'1')}})}
- var steps=[function(){s.classList.add('nmcmp')},function(){hide('p.nmswh')},function(){hide('.nmhist')},function(){hide('.nmpop',1)},function(){hide('.nmdim',1)},function(){s.classList.add('nmtight')}];
+ var steps=[function(){hide('.nmhist')},function(){hide('.nmpop',1)},function(){hide('.nmdim',1)},function(){s.classList.add('nmtight')},function(){hide('.nmmore')},function(){hide('.nmstr')},function(){s.classList.add('nmtight2')}];
  for(var i=0;i<steps.length&&!ok();i++)steps[i]();
  /* что спрятали раньше, но теперь помещается (например, подсказка после того, как убрали историю), — вернуть */
  [].forEach.call(s.querySelectorAll('[data-nmfit="1"]'),function(e){var l=e.previousElementSibling;l=l&&l.getAttribute('data-nmfit')=='lab'?l:null;e.style.display='';if(l)l.style.display='';if(!ok()){e.style.display='none';if(l)l.style.display='none'}})}
@@ -1833,7 +1865,7 @@ function medsOn(k){var r=[];D.meds.forEach(function(m){if(k>=m.start&&k<=medEnd(
 function nextAppt(){return D.ev.filter(function(e){return e.k=='doc'&&e.d>=TODAY}).sort(function(a,b){return a.d.localeCompare(b.d)})[0]}
 function last(a){return a[a.length-1]}
 function todayOf(a){return a.filter(function(x){return x.d==TODAY})}
-function tile(a,icn,col,title,val,sub,add,tall){return '<button type="button" class="tile'+(tall?' tall':'')+'" style="--tc:var(--'+col+'-f);--tb:var(--'+col+'-b)" data-a="'+a+'"'+(a=='tileStub'?' disabled':'')+'>'+(LOOK=='d'?'<span class="tic">'+ic(icn)+'</span>':'')+'<span class="tt">'+title+'</span><span><span class="v'+(add?' add':'')+'">'+val+(add?ic('right'):'')+'</span>'+(sub?'<span class="s">'+sub+'</span>':'')+'</span></button>'}
+function tile(a,icn,col,title,val,sub,add,tall){if(!add)val=String(val).replace(/^([^ ]+) (.+)$/,'$1 <span class="vu">$2</span>');return '<button type="button" class="tile'+(tall?' tall':'')+'" style="--tc:var(--'+col+'-f);--tb:var(--'+col+'-b)" data-a="'+a+'"'+(a=='tileStub'?' disabled':'')+'>'+(LOOK=='d'?'<span class="tic">'+ic(icn)+'</span>':'')+'<span class="tt">'+title+'</span><span><span class="v'+(add?' add':'')+'">'+val+(add?ic('right'):'')+'</span>'+(sub?'<span class="s">'+sub+'</span>':'')+'</span></button>'}
 function nextEvPill(){var n=new Date(),hm=('0'+n.getHours()).slice(-2)+':'+('0'+n.getMinutes()).slice(-2),k=TODAY,list=[],day=0;
  for(var i=0;i<60;i++){k=addD(TODAY,i);list=eventsOn(k).filter(function(e){return i>0||!e.t||e.t>=hm});if(list.length){day=i;break}}
  if(!list.length)return '<span class="nev empty"><span class="nx"><span class="nw">Впереди</span><span class="nt">Событий нет</span></span></span>';
@@ -1847,7 +1879,7 @@ function heroArt(){return HERO[heroKey()]}
 A.heroT=function(){var o=['m','d','e','n'];HT=o[(o.indexOf(heroKey())+1)%4];render()};
 TAB.home=function(){var t=term(),h='';
  var bt=todayOf(D.bp),wt=todayOf(D.w),st=todayOf(D.symHist),lb=last(bt),lw=last(wt),ls=last(st);
- var ap=nextAppt(),apl=ap?'к приёму '+ruD(ap.d):'без приёма',td=eventsOn(TODAY)[0],now=toD(TODAY);
+ var ap=nextAppt(),apl=ap?'к приёму '+ap.d.slice(8,10)+'.'+ap.d.slice(5,7):'для приёма',td=eventsOn(TODAY)[0],now=toD(TODAY);
  h+='<div class="av"><button type="button" class="avb" data-a="profile" aria-label="Профиль">'+av(34)+'</button><button type="button" class="avb" data-a="notifs" aria-label="Уведомления">'+ic('bell')+(unread()?'<i>'+unread()+'</i>':'')+'</button></div>';
  h+='<div class="hero"><div><small>'+greet()+'</small><b>'+esc(D.name)+'!</b><span>'+t.text+'</span></div>'+(LOOK=='d'?'<div class="mascot violet hsc" role="button" tabindex="0" data-a="heroT" aria-label="Сменить время суток (прототип)">'+heroArt()+'</div>':'<div class="mascot violet">'+ic('fruit')+'</div>')+'</div>';
  h+='<div class="sq" data-drag="1"><button type="button" class="sqc blue" data-a="tab" data-x="cal">'+(LOOK=='d'?'<svg class="dec" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="190" cy="8" r="50" fill="var(--dc,var(--k-b-ln))" opacity=".12"/><circle cx="190" cy="8" r="29" fill="var(--dc,var(--k-b-ln))" opacity=".12"/><path d="M0 140c34-9 62 4 98-3s58-9 102-2v15H0z" fill="var(--dc,var(--k-b-ln))" opacity=".1"/></svg>':'')+'<span class="dtop"><span class="big">'+now.getDate()+'</span><span class="dm"><b>'+MG[now.getMonth()]+'</b><small>'+WD[now.getDay()]+'</small></span></span>'+(LOOK=='d'?BIRDS:'')+nextEvPill()+'</button><button type="button" class="sqc green" data-a="fruit">'+(LOOK=='d'?'<svg class="dec" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="60" cy="52" r="50" fill="var(--h-card)" opacity=".45"/><circle cx="60" cy="52" r="34" fill="var(--h-card)" opacity=".5"/><path d="M156 112l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="var(--g-ac)" opacity=".55"/></svg>':'')+'<small class="fl1">Малыш размером с</small>'+(LOOK=='d'?COCO:'<span style="font-size:64px">'+ic('fruit')+'</span>')+'<span class="fl2"><b>Кокос</b><small>28 см • 430 г</small></span></button></div>';
@@ -1859,11 +1891,11 @@ TAB.home=function(){var t=term(),h='';
   if(vis.length){var m=vis[0];h+='<button type="button" class="info orange" data-a="medPlaque"><span style="font-size:22px">'+ic('pill')+'</span><span class="tx"><b>'+(vis.length>1?'Новые препараты':'Новый препарат')+'</b><small>'+vis.map(function(x){return esc(x.name)}).join(', ')+'</small></span><span class="go">Начать приём</span></button>'}
   h+='</div>'}
  h+='<div class="sec">Фокус дня</div><div class="focus"><div class="col">'+
-  tile('tileBp','pulse','blue','Давление',lb?lb.sys+'/'+lb.dia:'Добавить',lb?'пульс '+(lb.pulse||'—')+' · '+pl(bt.length,'замер','замера','замеров'):'',!lb,false)+
-  tile('tileSym','face','magenta','Симптомы',ls?pl(ls.items.length,'симптом','симптома','симптомов'):'Добавить',ls?(ls.mood!=null?'самочувствие '+MOODS[ls.mood]:'без оценки самочувствия'):'',!ls,true)+
+  tile('tileBp','pulse','blue','Давление',lb?lb.sys+'/'+lb.dia:'Добавить',lb?(lb.pulse?'пульс '+lb.pulse+' · '+pl(bt.length,'замер','замера','замеров'):'+ пульс, '+pl(bt.length,'замер','замера','замеров')):'',!lb,true)+
+  tile('tileSym','face','magenta','Симптомы',ls?pl(ls.items.length,'симптом','симптома','симптомов'):'Добавить',ls?(ls.mood!=null?'самочувствие '+MOODS[ls.mood]:'+ самочувствие'):'',!ls,false)+
   '</div><div class="col">'+
-  tile('tileQ','chat','violet','Вопросы к врачу',D.q.length?pl(D.q.length,'вопрос','вопроса','вопросов'):'Добавить',D.q.length?apl:'',!D.q.length,true)+
-  tile('tileW','scale','green','Вес мамы',lw?fm(lw.v)+' кг':'Добавить',lw?(D.pre?'+'+fm((lw.v-D.pre).toFixed(1))+' кг':'Добавьте вес до беременности'):'',!lw,false)+
+  tile('tileQ','chat','violet','Вопросы',D.q.length?pl(D.q.length,'вопрос','вопроса','вопросов'):'Добавить',D.q.length?apl:'',!D.q.length,false)+
+  tile('tileW','scale','green','Вес мамы',lw?fm(lw.v)+' кг':'Добавить',lw?(D.pre?'динамика: '+(lw.v-D.pre>0.04?'+':lw.v-D.pre<-0.04?'−':'')+fm(Math.abs(lw.v-D.pre).toFixed(1))+' кг':'+ вес до зачатия'):'',!lw,true)+
   '</div></div>';
  /* Блок «Забота»: карточки-занятия в ленте, листается вбок */
  function cc(a,icn,title,val,sub){return '<button type="button" class="cc" data-a="'+a+'"><span class="cci">'+ic(icn)+'</span><span class="cct"><b>'+title+'</b><small>'+sub+'</small></span><span class="ccgo">'+val+ic('right')+'</span></button>'}
@@ -1892,16 +1924,18 @@ function openM(k){UI.m={sys:'',dia:'',pulse:'',v:'',pre:'',err:'',warn:false};sh
 A.tileBp=function(){openM('bp')};A.tileW=function(){openM('w')};A.tileBelly=function(){openM('belly')};A.tileStub=function(){toast('Здесь появится новый инструмент')};
 A.soonKegel=function(){toast('Упражнения Кегеля появятся позже')};A.soonBreath=function(){toast('Спокойное дыхание появится позже')};A.soonYoga=function(){toast('Йога появится позже')};
 function measForm(k){var h='',m=UI.m,l=last(D[MK[k].arr]);
- if(k=='bp')h+='<p class="hint">Измеряйте в покое, после 5 минут сидя.</p><div class="fields">'+fld('Верхнее','m.sys',{mode:'numeric',ph:l?l.sys:''})+fld('Нижнее','m.dia',{mode:'numeric',ph:l?l.dia:''})+fld('Пульс','m.pulse',{mode:'numeric',ph:l?l.pulse:''})+'</div>';
- if(k=='w'){h+='<p class="hint">Дата и время ставятся сами.</p>'+'<div class="fields">'+fld('Вес, кг','m.v',{mode:'decimal',ph:l?fm(l.v):''})+(D.pre?'':fld('До беременности, кг','m.pre',{mode:'decimal',ph:'необязательно'}))+'</div>'}
+ if(k=='bp')h+='<p class="hint">Измеряйте в покое, после 5 минут сидя.</p><div class="fields">'+fld('Верхнее','m.sys',{mode:'numeric',ph:l?l.sys:''})+fld('Нижнее','m.dia',{mode:'numeric',ph:l?l.dia:''})+fld('Пульс','m.pulse',{mode:'numeric',ph:l?l.pulse:''})+'</div>'+(function(){var lt=last(todayOf(D.bp));return lt&&!lt.pulse?'<p class="hint">Если ввести только пульс, он добавится к замеру в '+lt.t+'.</p>':''})();
+ if(k=='w'){h+='<p class="hint">Дата и время ставятся сами.</p>'+'<div class="fields">'+fld('Вес, кг','m.v',{mode:'decimal',ph:l?fm(l.v):''})+(D.pre?'':fld('До зачатия, кг','m.pre',{mode:'decimal',ph:'можно примерно'}))+'</div>'}
  if(k=='belly')h+='<p class="hint">Измеряйте на уровне пупка.</p>'+'<div class="fields">'+fld('Обхват, см','m.v',{mode:'decimal',ph:l?l.v:''})+'</div>';
- h+=err(m.err);
+ h+=err(m.err).replace('class="err"','class="err mf"');
  if(m.warn)h+='<button type="button" class="ghost" data-a="saveM" data-x="'+k+'|force" style="margin:0 0 6px">Всё равно сохранить</button>';
  return h+'<button type="button" class="btn" data-a="saveM" data-x="'+k+'">Сохранить</button>'}
 SHT.meas=function(s){var k=s.k;return '<button type="button" class="grab" data-grab="measFull|'+k+'" aria-label="Открыть график и историю"><i></i></button><h3>'+MK[k].title+'</h3>'+measForm(k)+'<button type="button" class="link" data-a="measFull" data-x="'+k+'">График и история</button>'};
 A.measFull=function(k){App.sheet=null;push('meas',{k:k})};
 A.saveM=function(x){var a=x.split('|'),k=a[0],force=a[1],m=UI.m,e={d:TODAY,t:nowT()};
- if(k=='bp'){var s=num(m.sys),d=num(m.dia);if(s==null||d==null){m.err='Введите значение';m.warn=false;return render()}
+ if(k=='bp'){var s=num(m.sys),d=num(m.dia),pu=num(m.pulse),lt=last(todayOf(D.bp));
+  if(s==null&&d==null&&pu!=null&&lt&&!lt.pulse){lt.pulse=pu;App.sheet=null;App.stack=[];App.tab='home';toast('Пульс добавлен к замеру в '+lt.t);return}
+  if(s==null||d==null){m.err='Введите верхнее и нижнее значения';m.warn=false;return render()}
   if(!force&&(s<60||s>260||d<30||d>160)){m.err='Проверьте значение';m.warn=true;return render()}e.sys=s;e.dia=d;e.pulse=num(m.pulse)||0}
  else{var v=num(m.v);if(v==null){m.err='Введите значение';m.warn=false;return render()}
   var lim=k=='w'?[30,200]:[40,200];if(!force&&(v<lim[0]||v>lim[1])){m.err='Проверьте значение';m.warn=true;return render()}e.v=v;
@@ -2877,10 +2911,11 @@ A.zoom=function(x){var a=x.split('|'),z=UI.zs[+a[0]];z.z=a[1]=='in'?z.z*1.5:z.z/
 
 /* ===== Чекап (D-19…D-22) ===== */
 var ALLIND={hgb:{n:'Гемоглобин',u:'г/л'},fer:{n:'Ферритин',u:'мкг/л'},glu:{n:'Глюкоза',u:'ммоль/л'},rbc:{n:'Эритроциты',u:'×10¹²/л'},plt:{n:'Тромбоциты',u:'×10⁹/л'},hct:{n:'Гематокрит',u:'%'}};
-var RT={lab:['lab','blue','Анализ'],uzi:['uzi','violet','УЗИ'],diag:['diag','orange','Диагностика'],doc:['doc','green','Приём врача']};
+var RT={lab:['lab','blue','Анализ'],uzi:['diag','violet','Диагностика'],diag:['diag','orange','Диагностика'],doc:['doc','green','Приём врача']};
 function recBy(id){return D.rec.filter(function(r){return r.id==id})[0]}
 function linked(id){return D.ind.filter(function(a){return a.v.some(function(x){return x[2]&&x[2].r==id})})}
-function rcard(r){var o=RT[r.k];return '<button type="button" class="rc" data-a="recOpen" data-x="'+r.id+'"><span class="ico '+o[1]+'">'+ic(o[0])+'</span><span class="cm"><span class="rn">'+esc(r.n)+'</span><span class="s">'+esc(r.clinic||r.doctor||'Клиника не указана')+'</span></span><span class="dt">'+(LOOK=='d'?dmy(r.d).slice(0,6)+r.d.slice(2,4):dmy(r.d))+'</span><span class="fl">'+ic('paperclip')+r.f+'</span></button>'}
+/* плашка Чекапа: круглый значок, название до двух строк с «…», все плашки одной высоты; скрепка перед датой, чтобы дата не прыгала (D-170) */
+function rcard(r){var o=RT[r.k];return '<button type="button" class="rc" data-a="recOpen" data-x="'+r.id+'"><span class="ico '+o[1]+'">'+ic(o[0])+'</span><span class="cm"><span class="rn">'+esc(r.n)+'</span><span class="s">'+esc(r.clinic||r.doctor||'Клиника не указана')+'</span></span>'+(r.f?'<span class="fl">'+ic('paperclip')+r.f+'</span>':'')+'<span class="dt">'+(LOOK=='d'?dmy(r.d).slice(0,6)+r.d.slice(2,4):dmy(r.d))+'</span></button>'}
 var PER=[['all','Всё время'],['30','30 дней'],['90','3 месяца'],['t1','I триместр'],['t2','II триместр'],['t3','III триместр']];
 var RFLT=[['all','Все результаты'],['lab','Анализы'],['diag','Диагностики']];
 /* фильтры Чекапа — два выпадающих списка в одну строку (D-155) */
@@ -2974,7 +3009,7 @@ A.nOpen=function(id){var n=D.notifs.filter(function(x){return String(x.id)==id})
 /* ===== Профиль (D-40, D-41) ===== */
 A.profile=function(){push('pf')};
 function li(a,x,i,t,val,sub){return '<button type="button" class="li" data-a="'+a+'" data-x="'+(x||'')+'">'+(i?ic(i):'')+'<span class="tx">'+t+(sub?'<small>'+sub+'</small>':'')+'</span>'+(val?'<span class="val">'+val+'</span>':'')+'<span style="color:var(--t3);font-size:16px">'+ic('right')+'</span></button>'}
-SCR.pf=function(){var t=term();return scr('<button type="button" class="phead" data-a="pfEdit"><span>'+av(60)+'</span><span><b>'+esc(D.name)+'</b><small>'+t.text+'</small><small style="color:var(--acl);margin-top:2px">Изменить имя и аватар</small></span></button><div class="pcard" data-a="pfTerm" role="button" tabindex="0" aria-label="Срок беременности, изменить"><div class="tp"><span>Срок беременности</span><span class="pced">Изменить</span></div><div class="big">'+t.short+'</div><div class="sub">Считаем '+(D.method=='lmp'?'по последней менструации':'по УЗИ')+', '+dmy(D.lmp)+(D.multi?', многоплодная':'')+'<br>Предполагаемая дата родов: '+dmy(dueDate())+'</div></div><div class="grp">Обо мне</div><div class="list">'+li('pfGo','hw','scale','Рост и вес до беременности')+li('pfGo','docs','user','Мои врачи и роддом')+'</div><div class="grp">Настройки</div><div class="list">'+li('pfGo','tz','clock','Часовой пояс',D.tz.match(/UTC.\d/)[0])+li('pfGo','rem','bell','Напоминания')+(LOOK=='d'?li('pfGo','pals','heart','Лягушонок и цыплёнок',D.tips!==false?'':'Подсказки скрыты'):'')+li('pfGo','theme','sun','Тема',{sys:'Как в телефоне',light:'Светлая',dark:'Тёмная'}[D.theme])+li('pfGo','look','image','Вид прототипа',LOOK=='d'?'Мой дизайн':'Простой стиль','Для сравнения')+'</div><div class="grp">Данные и справка</div><div class="list">'+li('pfGo','data','shield','Данные и конфиденциальность')+li('pfGo','about','info','О приложении и поддержка')+'</div>','Главная')};
+SCR.pf=function(){var t=term();return scr('<button type="button" class="phead" data-a="pfEdit"><span>'+av(60)+'</span><span><b>'+esc(D.name)+'</b><small>'+t.text+'</small><small style="color:var(--acl);margin-top:2px">Изменить имя и аватар</small></span></button><div class="pcard" data-a="pfTerm" role="button" tabindex="0" aria-label="Срок беременности, изменить"><div class="tp"><span>Срок беременности</span><span class="pced">Изменить</span></div><div class="big">'+t.short+'</div><div class="sub">Считаем '+(D.method=='lmp'?'по последней менструации':'по УЗИ')+', '+dmy(D.lmp)+(D.multi?', многоплодная':'')+'<br>Предполагаемая дата родов: '+dmy(dueDate())+'</div></div><div class="grp">Обо мне</div><div class="list">'+li('pfGo','hw','scale','Рост и вес до беременности')+li('pfGo','docs','user','Мои врачи и роддом')+'</div><div class="grp">Настройки</div><div class="list">'+li('pfGo','tz','clock','Часовой пояс',D.tz.match(/UTC.\d/)[0])+li('pfGo','rem','bell','Напоминания')+(LOOK=='d'?li('pfGo','pals','heart','Компаньоны',D.tips!==false?'':'Подсказки скрыты'):'')+li('pfGo','theme','sun','Тема',{sys:'Как в телефоне',light:'Светлая',dark:'Тёмная'}[D.theme])+li('pfGo','look','image','Вид прототипа',LOOK=='d'?'Мой дизайн':'Простой стиль','Для сравнения')+'</div><div class="grp">Данные и справка</div><div class="list">'+li('pfGo','data','shield','Данные и конфиденциальность')+li('pfGo','about','info','О приложении и поддержка')+'</div>','Главная')};
 A.pfGo=function(x){push('pf_'+x)};
 A.pfTerm=function(){UI.pf={lmp:D.lmp,method:D.method,err:''};sheet('pfTerm')};
 SHT.pfTerm=function(){var u=UI.pf;return '<button type="button" class="grab" data-a="closeSheet" aria-label="Закрыть"><i></i></button><h3>Срок беременности</h3><p class="hint">Измените, если врач скорректировал срок.</p><button type="button" class="opt'+(u.method=='lmp'?' on':'')+'" data-a="pfM" data-x="lmp"><span class="rd"></span>По последней менструации</button><button type="button" class="opt'+(u.method=='us'?' on':'')+'" data-a="pfM" data-x="us" style="margin-bottom:10px"><span class="rd"></span>По УЗИ</button>'+fld('Первый день последней менструации','pf.lmp',{type:'date'})+err(u.err)+'<div class="row" style="border-bottom:0"><div class="tx">Многоплодная беременность<small style="display:block;font-size:11.5px;color:var(--t3)">Двойня и более</small></div><button type="button" class="sw'+(D.multi?' on':'')+'" data-a="pfMulti" aria-pressed="'+D.multi+'" aria-label="Многоплодная беременность"></button></div><button type="button" class="btn" data-a="pfTermS">Сохранить</button>'};
@@ -2985,7 +3020,7 @@ function avSmall(x){var st='width:48px;height:48px;font-size:22px';if(x=='tg')re
 function avCap(x){return x=='tg'?'Telegram':x=='photo'?'Фото':'Рисунок'}
 SCR.pf_edit=function(){var h='<div class="h2">Имя и аватар</div><div class="avbig">'+av(LOOK=='d'?116:96)+'</div><div class="grp">Мои аватары</div><div class="avgrid">'+D.usedAv.map(function(x){return '<button type="button" class="avt'+(D.avatar==x?' on':'')+'" data-a="pfAv" data-x="'+x+'" aria-label="'+(x=='tg'?'Аватар из Telegram':'Использованный аватар')+'">'+avSmall(x)+'<small>'+avCap(x)+'</small></button>'}).join('')+'</div><div class="grp">Иллюстрации</div><div class="avgrid">'+ILL.map(function(o,i){return '<button type="button" class="avt'+(D.avatar==String(i)?' on':'')+'" data-a="pfAv" data-x="'+i+'" aria-label="Иллюстрация '+(i+1)+'">'+avSmall(String(i))+'</button>'}).join('')+'</div><button type="button" class="ghost" data-a="pfAv" data-x="photo">Загрузить своё фото</button><div class="grp">Имя</div>'+fld('Как к вам обращаться','pe.name',{max:30})+'<p class="hint">Так приложение здоровается с вами. В Telegram имя не меняется.</p>'+fld('Полное имя (необязательно)','pe.full',{max:80,ph:'Фамилия Имя Отчество'})+'<p class="hint">Для документов и экрана «Показать врачу».</p><button type="button" class="btn" data-a="pfNameS">Сохранить</button>';return scr(h,'Профиль')};
 A.pfAv=function(x){D.avatar=x;if(x!='tg'&&D.usedAv.indexOf(x)<0){var u=D.usedAv.filter(function(a){return a!='tg'});u.push(x);D.usedAv=['tg'].concat(u.slice(-3))}render()};A.pfNameS=function(){var n=UI.pe.name.trim();if(n)D.name=n;D.full=UI.pe.full.trim();App.stack.pop();toast('Сохранено')};
-SCR.pf_hw=function(){if(UI.hw==null||UI.hw.fresh!==App.stack.length){UI.hw={fresh:App.stack.length,h:D.height,w:D.pre?fm(D.pre):''}}return scr('<div class="h2">Рост и вес до беременности</div><p class="hint">Нужны для графика веса. Вес до беременности можно не указывать.</p>'+fld('Рост, см','hw.h',{mode:'numeric'})+fld('Вес до беременности, кг','hw.w',{mode:'decimal'})+'<button type="button" class="btn" data-a="pfHwS">Сохранить</button>','Профиль')};
+SCR.pf_hw=function(){if(UI.hw==null||UI.hw.fresh!==App.stack.length){UI.hw={fresh:App.stack.length,h:D.height,w:D.pre?fm(D.pre):''}}return scr('<div class="h2">Рост и вес до беременности</div><p class="hint">Нужны для графика веса. Вес до зачатия можно не указывать.</p>'+fld('Рост, см','hw.h',{mode:'numeric'})+fld('Вес до зачатия, кг','hw.w',{mode:'decimal'})+'<button type="button" class="btn" data-a="pfHwS">Сохранить</button>','Профиль')};
 A.pfHwS=function(){D.height=UI.hw.h;D.pre=num(UI.hw.w);UI.hw=null;App.stack.pop();toast('Сохранено')};
 SCR.pf_docs=function(){return scr('<div class="h2">Мои врачи и роддом</div><p class="hint">Имя и телефон, чтобы всё было под рукой.</p><div class="list">'+li('toastA','Здесь откроется форма врача','', 'Мой врач','Добавить','Гинеколог')+li('toastA','Здесь откроется форма роддома','','Роддом','Добавить','Название, адрес, телефон')+'</div>','Профиль')};
 A.toastA=function(x){toast(x)};
@@ -2993,7 +3028,7 @@ SCR.pf_tz=function(){return scr('<div class="h2">Часовой пояс</div><p
 A.pfTz=function(x){D.tz=x;render()};
 SCR.pf_rem=function(){function r(k,t,s){return '<div class="row"><div class="tx">'+t+'<small style="display:block;font-size:11.5px;color:var(--t3);margin-top:1px">'+s+'</small></div><button type="button" class="sw'+(D.rem[k]?' on':'')+'" data-a="pfSw" data-x="'+k+'" aria-pressed="'+D.rem[k]+'" aria-label="'+t+'"></button></div>'}return scr('<div class="h2">Напоминания</div><p class="hint">Настраиваются один раз для всех записей этого типа.</p>'+remRows('med','Лекарства','med')+remRows('visit','Приёмы и обследования','event')+remRows('other','Остальные события','event')+'<div class="grp">Упражнения и практики</div>'+r('ex','Напоминать каждый день','одно на все практики: Кегель, дыхание, йога')+(D.rem.ex?'<div class="list" style="margin-top:6px">'+li('exTimeOpen','','','Время',D.exT)+'</div>':'')+(D.trk.sg?'<div class="grp">Сахар крови</div>'+r('sg','Напоминать о замерах','по одному на каждый замер из схемы дневника')+(D.rem.sg?'<div class="list" style="margin-top:6px">'+sgList().map(function(id){return li('sgTimeOpen',id,'',SGN[id],D.sg.t[id])}).join('')+'</div>':''):'')+'<div class="grp">Ещё</div>'+r('morning','Утренняя сводка','что запланировано на день')+r('hide','Скрывать подробности','в Telegram придёт «У вас событие» вместо названия'),(function(){var p=App.stack[App.stack.length-2];return p&&(p.n=='kg'||p.n=='br'||p.n=='yg'||p.n=='sg')?'Назад':'Профиль'})())};
 A.pfSw=function(x){D.rem[x]=!D.rem[x];render()};
-SCR.pf_pals=function(){var on=D.tips!==false;return scr('<div class="h2">Лягушонок и цыплёнок</div><p class="hint">Герои живут на Главной, в Чекапе и в Календаре. Они не дают медицинских советов, только подсказывают, как пользоваться приложением.</p><div class="row"><div class="tx">Подсказки про «+»<small style="display:block;font-size:11.5px;color:var(--t3);margin-top:1px">'+(on?'в Календаре и Чекапе: что можно добавить через «+»':'скрыты; в Календаре герои просто отдыхают')+'</small></div><button type="button" class="sw'+(on?' on':'')+'" data-a="pfTips" aria-pressed="'+on+'" aria-label="Подсказки про «+»"></button></div>','Профиль')};
+SCR.pf_pals=function(){var on=D.tips!==false;return scr('<div class="h2">Компаньоны</div><p class="hint">Герои живут на Главной, в Чекапе и в Календаре. Они не дают медицинских советов, только подсказывают, как пользоваться приложением.</p><div class="row"><div class="tx">Подсказки про «+»<small style="display:block;font-size:11.5px;color:var(--t3);margin-top:1px">'+(on?'в Календаре и Чекапе: что можно добавить через «+»':'скрыты; в Календаре герои просто отдыхают')+'</small></div><button type="button" class="sw'+(on?' on':'')+'" data-a="pfTips" aria-pressed="'+on+'" aria-label="Подсказки про «+»"></button></div>','Профиль')};
 A.pfTips=function(){D.tips=D.tips===false;render()};
 SCR.pf_look=function(){return scr('<div class="h2">Вид прототипа</div><p class="hint">Логика одна, меняется только внешний вид. «Мой дизайн» сейчас сделан для Главной, Календаря, Чекапа, Статей, Профиля, кнопки «+», уведомлений и нижнего меню.</p>'+[['d','Мой дизайн'],['s','Простой стиль']].map(function(x){return '<button type="button" class="opt'+(LOOK==x[0]?' on':'')+'" data-a="setLook" data-x="'+x[0]+'"><span class="rd"></span>'+x[1]+'</button>'}).join(''),'Профиль')};
 A.setLook=function(x){LOOK=x;render()};
