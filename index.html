@@ -88,7 +88,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .h2{font-size:19px;font-weight:500;margin:0 0 4px}
 .hint{font-size:12px;color:var(--t2);margin:0 0 10px;line-height:1.4}
 .grp{font-size:11px;color:var(--t3);letter-spacing:.03em;text-transform:uppercase;margin:14px 0 6px}
-.f{flex:1;min-width:0;margin-bottom:10px}.f label{display:block;font-size:11px;color:var(--t3);margin:0 0 3px}
+.f{flex:1;min-width:0;margin-bottom:10px}.f label{display:block;font-size:12px;line-height:1.4;color:var(--t2);margin:0 0 4px}
 .fields{display:flex;gap:8px}
 .in{width:100%;border:.5px solid var(--bds);border-radius:10px;padding:9px 10px;font-size:15px;background:var(--s1);min-height:40px;font-variant-numeric:tabular-nums}
 textarea.in{min-height:56px;resize:none;font-size:14px}
@@ -119,14 +119,14 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 .sbar{position:sticky;bottom:-18px;background:var(--s2);padding:6px 0 18px;margin-bottom:-18px}
 .tgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 8px}
 .filein{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:0 12px;border-radius:10px;font-size:13px;font-weight:500;white-space:nowrap;background:var(--acbg);color:var(--acl);flex:none;margin-bottom:10px}.fileok{display:flex;align-items:center;gap:6px;flex:none;margin-bottom:10px}.fileok .filein{margin:0}
-.sheet.mh .hint:has(+.qta){margin-bottom:4px}.sheet.mh .qta{height:73px;min-height:73px;margin-bottom:4px;padding:7px 10px;font-size:14px;line-height:1.3}
+.sheet.mh .f:has(>.qta){margin-bottom:16px}.sheet.mh .qta{height:76px;min-height:76px;margin-bottom:0;padding:12px 14px;font-size:15px;line-height:1.35}
 .qta{display:block;min-height:88px;margin-bottom:8px;font-size:15px;line-height:1.35}
 .qdone{flex:none;font-size:12.5px;font-weight:500;padding:6px 10px;border-radius:9px;border:.5px solid var(--bds);color:var(--ac)}
 .cloud{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 6px}.stag{display:inline-flex;align-items:center;border:.5px solid var(--bds);border-radius:999px;background:var(--s1);font-size:13.5px}.stag>button:first-child{padding:8px 12px}.stag.on{background:var(--magenta-b);border-color:var(--magenta-f);color:var(--magenta-f);font-weight:500}.stp2{padding:8px 10px 8px 0;font-size:13px;color:inherit;opacity:.7}.stag>button:first-child:has(+.stp2){padding-right:6px}
 .frow{display:flex;gap:6px;margin-bottom:6px}.frow .chip{flex:1 1 auto;justify-content:center;padding:6px 7px;font-size:12.5px}
 .evw{display:flex;align-items:center;gap:8px;margin-bottom:6px}.evw .ev{flex:1;min-width:0;margin-bottom:0}.evt{flex:none;width:42px;font-size:13px;color:var(--t2);font-variant-numeric:tabular-nums;line-height:1.2}
 .ev,.rc{min-height:66px;padding:12px;font-size:14.5px}.ev .ico,.rc .ico{width:40px;height:40px;border-radius:12px;font-size:21px}.ev small,.rc .s{font-size:12.5px;margin-top:2px}.rc .rn{font-size:14.5px}.c.st.sel{border-radius:9px}
-.tile{background:var(--s1);background:color-mix(in srgb,var(--tb) 42%,var(--s2));border-color:transparent}.tile .tt{font-size:14.5px;font-weight:650;color:var(--tc)}.tile .tt .ic{font-size:18px}
+.tile{background:var(--s1);background:color-mix(in srgb,var(--tb) 42%,var(--s2));border-color:transparent}.tile .tt{font-size:14.5px;font-weight:600;line-height:1.25;color:var(--tc)}.tile .tt .ic{font-size:18px}
 .focus .tile{border:.5px solid color-mix(in srgb,var(--green-f) 28%,transparent);box-shadow:0 1px 5px rgba(0,60,10,.1);--tc:var(--green-f)}.focus .tile{background:var(--s2);border-color:var(--bd)}.focus .tile[disabled]{opacity:.5;cursor:default;box-shadow:none}.focus .col:first-child .tile:nth-child(odd),.focus .col:last-child .tile:nth-child(even){background:color-mix(in srgb,var(--green-b) 42%,var(--s2));border-color:color-mix(in srgb,var(--green-f) 28%,transparent)}.focus .tile .tt,.focus .tile .v,.focus .tile .s{color:var(--t2)}.focus .col:first-child .tile:nth-child(odd) .tt,.focus .col:first-child .tile:nth-child(odd) .v,.focus .col:first-child .tile:nth-child(odd) .s,.focus .col:last-child .tile:nth-child(even) .tt,.focus .col:last-child .tile:nth-child(even) .v,.focus .col:last-child .tile:nth-child(even) .s{color:var(--green-f)}.focus .tile .v.add{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;font-weight:500}.focus .tile .v.add .ic{font-size:16px}
 /* счётчики */
 .big-tap{display:flex;flex-direction:column;align-items:center;justify-content:center;width:190px;height:190px;border-radius:50%;margin:14px auto;background:var(--magenta-b);color:var(--magenta-f);font-size:15px;font-weight:500;text-align:center;user-select:none}
@@ -172,7 +172,7 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 @keyframes dt{0%,60%,100%{opacity:.2}30%{opacity:1}}
 .orig{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:10px;width:100%;padding:8px 16px;background:var(--s2);border-bottom:.5px solid var(--bd)}
 .mp{display:inline-flex;width:34px;height:44px;border-radius:5px;background:var(--paper);border:.5px solid var(--bds);flex-direction:column;gap:3px;padding:6px 5px}.mp i{display:block;height:2px;border-radius:1px;background:var(--pl)}
-.orig .t{font-size:12.5px;line-height:1.3}.orig .t b{display:block;font-weight:500;font-size:13px}.orig .t small{color:var(--t3);font-size:11.5px}.orig .go{margin-left:auto;font-size:12px;color:var(--ac);flex:none;font-weight:500}
+.orig .t{font-size:12.5px;line-height:1.3}.orig .t b{display:block;font-weight:500;font-size:13px}.orig .t small{color:var(--t3);font-size:11.5px}.orig .go{margin-left:auto;margin-right:8px;font-size:12px;color:var(--ac);flex:none;font-weight:500}
 .scroll{flex:1;min-height:0;overflow-y:auto}.pad{padding:4px 16px 16px}
 .sum{font-size:13px;color:var(--t2);line-height:1.45;margin:12px 0 10px}
 .card{border:.5px solid var(--bd);border-radius:16px;background:var(--s1);padding:12px;margin-bottom:10px}.card.off{opacity:.6}
@@ -211,7 +211,7 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 .mm{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px}.mm i{aspect-ratio:1/1;border-radius:2px;background:var(--al);display:block}.mm i.e{background:var(--blue-f);opacity:.7}.mm i.t{background:var(--magenta-f);opacity:1}.mm i.x{background:transparent}
 .tchip{display:inline-block;border:.5px solid var(--bds);border-radius:6px;padding:1px 7px;margin-left:4px;font-size:12px}
 .pr{height:6px;border-radius:3px;background:var(--al);margin:6px 0 0;overflow:hidden}.pr div{height:100%;background:var(--ac)}
-.doc{display:flex;align-items:center;gap:10px;padding:8px;border:.5px solid var(--bd);border-radius:10px;background:var(--s1);width:100%}.doc .th0{width:40px;height:52px;border-radius:6px;background:var(--al);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--t3);flex:none}.doc small{font-size:11px;color:var(--t2);display:block}.doc .op{margin-left:auto;font-size:12px;color:var(--ac);white-space:nowrap}
+.doc{display:flex;align-items:center;gap:10px;padding:8px;border:.5px solid var(--bd);border-radius:10px;background:var(--s1);width:100%}.doc .th0{width:40px;height:52px;border-radius:6px;background:var(--al);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--t3);flex:none}.doc small{font-size:11px;color:var(--t2);display:block}.doc .op{margin-left:auto;margin-right:8px;font-size:12px;color:var(--ac);white-space:nowrap}
 .acts{display:flex;gap:8px;margin-top:14px}.acts button{flex:1;border:.5px solid var(--bds);border-radius:10px;padding:9px;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px}.acts .dg{color:var(--danger)}
 /* чекап */
 .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:0 0 10px;padding:3px;border-radius:12px;background:var(--al)}
@@ -240,7 +240,7 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 .art p{font-size:14px;line-height:1.55;margin:0 0 12px}.art h4{font-size:15.5px;font-weight:500;margin:6px 0}.img{margin:4px -14px 12px;height:150px;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative}.img em{position:absolute;bottom:6px;left:14px;font-size:10.5px;font-style:normal;opacity:.7}.srcs{font-size:12px;color:var(--t2);margin:12px 0 8px;line-height:1.45}.srcs b{font-weight:500;color:var(--t1)}.anote{font-size:11.5px;color:var(--t3);padding:8px 10px;border-radius:10px;border:.5px dashed var(--bds);margin-bottom:14px}
 /* профиль, уведомления */
 .phead{display:flex;align-items:center;gap:12px;margin:2px 0 14px;width:100%}.phead b{display:block;font-size:19px;font-weight:600}.phead small{font-size:12.5px;color:var(--t2);display:block}
-.pcard{border:.5px solid var(--bd);background:var(--s1);border-radius:16px;padding:12px 14px;margin-bottom:12px}.pcard .tp{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--t2)}.pcard .tp button{color:var(--ac);font-size:13px;font-weight:500}.pcard .big{font-size:21px;font-weight:600;margin:4px 0 2px;font-variant-numeric:tabular-nums}.pcard .sub{font-size:12.5px;color:var(--t2)}
+.pcard{cursor:pointer;border:.5px solid var(--bd);background:var(--s1);border-radius:16px;padding:12px 14px;margin-bottom:12px}.pcard .tp{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--t2)}.pcard .tp .pced{color:var(--ac);font-size:13px;font-weight:500}.pcard .big{font-size:21px;font-weight:600;margin:4px 0 2px;font-variant-numeric:tabular-nums}.pcard .sub{font-size:12.5px;color:var(--t2)}
 .list{border:.5px solid var(--bd);border-radius:16px;overflow:hidden;background:var(--s1)}.li{display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;font-size:14.5px;border-bottom:.5px solid var(--bd)}.li:last-child{border-bottom:0}.li>.ic{font-size:20px;color:var(--t2)}.li .tx{flex:1;min-width:0}.li .tx small{display:block;font-size:11.5px;color:var(--t3);margin-top:1px}.li .val{font-size:12.5px;color:var(--t3)}.li.del{color:var(--danger)}.li.del>.ic{color:var(--danger)}
 .sw{width:42px;height:24px;border-radius:12px;background:var(--bds);position:relative;flex:none;transition:background .15s}.sw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--s2);transition:transform .15s}.sw.on{background:var(--ac)}.sw.on::after{transform:translateX(18px)}
 .warn{background:var(--dgbg);color:var(--danger);border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.45;margin:6px 0 10px}
@@ -344,7 +344,7 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 .lk-d .t-home .focus{gap:12px;margin-bottom:20px}.lk-d .t-home .col{gap:12px}
 .lk-d .t-home .focus .tile,.lk-d .t-home .focus .col:first-child .tile:nth-child(odd),.lk-d .t-home .focus .col:last-child .tile:nth-child(even){position:relative;overflow:hidden;background:var(--tb);border:0;box-shadow:none;border-radius:24px;padding:14px;height:132px}
 .lk-d .t-home .focus .tile.tall{height:176px}
-.lk-d .t-home .focus .tile .tt,.lk-d .t-home .focus .col:first-child .tile:nth-child(odd) .tt,.lk-d .t-home .focus .col:last-child .tile:nth-child(even) .tt{color:var(--tc);font-size:14px;font-weight:600;padding-right:42px}
+.lk-d .t-home .focus .tile .tt,.lk-d .t-home .focus .col:first-child .tile:nth-child(odd) .tt,.lk-d .t-home .focus .col:last-child .tile:nth-child(even) .tt{color:var(--tc);font-size:14px;font-weight:600;padding-right:42px;line-height:1.25}
 .lk-d .t-home .focus .tile .v,.lk-d .t-home .focus .col:first-child .tile:nth-child(odd) .v,.lk-d .t-home .focus .col:last-child .tile:nth-child(even) .v{color:var(--h-ink);font-size:25px;font-weight:600}
 .lk-d .t-home .focus .tile .v.add,.lk-d .t-home .focus .col:first-child .tile:nth-child(odd) .v.add,.lk-d .t-home .focus .col:last-child .tile:nth-child(even) .v.add{color:var(--tc);font-size:14px;font-weight:600;display:inline-flex;gap:4px;align-items:center;justify-content:flex-start;background:var(--h-card);border-radius:999px;padding:7px 12px;width:max-content}
 .lk-d .t-home .focus .tile .s,.lk-d .t-home .focus .col:first-child .tile:nth-child(odd) .s,.lk-d .t-home .focus .col:last-child .tile:nth-child(even) .s{color:var(--h-sub);font-size:12px}
@@ -475,7 +475,7 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 .lk-d .s-pfx .pcard::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:var(--h-card);opacity:.35;pointer-events:none}
 .lk-d .s-pfx .pcard>*{position:relative;z-index:1}
 .lk-d .s-pfx .pcard .tp{color:var(--g-dk)}
-.lk-d .s-pfx .pcard .tp button{background:var(--h-card);color:var(--g-dk);border-radius:999px;padding:6px 12px;box-shadow:var(--h-shadow)}
+.lk-d .s-pfx .pcard .tp .pced{background:var(--h-card);color:var(--g-dk);border-radius:999px;padding:6px 12px;box-shadow:var(--h-shadow)}
 .lk-d .s-pfx .pcard .big{font-size:26px;color:var(--h-ink);margin:8px 0 4px}
 .lk-d .s-pfx .pcard .sub{color:var(--g-dk);line-height:1.5}
 .lk-d .s-pfx .grp{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--h-sub);letter-spacing:.06em;margin:20px 0 10px}
@@ -1320,22 +1320,22 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 .care{display:flex;gap:10px;overflow-x:auto;margin:0 -14px 14px;padding:0 14px 4px;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-padding:0 14px;cursor:grab;user-select:none;-webkit-user-select:none}.care::-webkit-scrollbar{display:none}
 .cc{flex:none;width:40%;min-width:136px;height:168px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;padding:12px;border-radius:16px;border:.5px solid var(--bd);background:var(--s1);color:var(--t1);scroll-snap-align:start}
 .cci{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--s2);color:var(--ac);font-size:20px;flex:none}
-.cct{flex:1;min-height:0}.cct b{display:block;font-size:14.5px;font-weight:600;line-height:1.2}.cct small{display:block;font-size:12px;color:var(--t2);margin-top:4px;line-height:1.3}
+.cct{flex:1;min-height:0}.cct b{display:block;font-size:14.5px;font-weight:600;line-height:1.25;white-space:nowrap}.cct small{display:block;font-size:12px;color:var(--t2);margin-top:4px;line-height:1.3}
 .ccgo{display:inline-flex;align-items:center;gap:4px;font-size:13.5px;font-weight:500;color:var(--ac)}.ccgo .ic{font-size:15px}
 .lk-d .t-home .care{gap:12px;margin:0 -16px 20px;padding:4px 16px 8px;scroll-padding:0 16px}
 .lk-d .t-home .cc{position:relative;overflow:hidden;height:184px;padding:14px;border:0;border-radius:26px;background:var(--k-g-bg);color:var(--h-ink)}
 .lk-d .t-home .cc::before{content:"";position:absolute;left:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:var(--h-card);opacity:.45;pointer-events:none}
 .lk-d .t-home .cci{position:relative;width:46px;height:46px;background:var(--h-card);color:var(--g-ac);font-size:22px}
-.lk-d .t-home .cct b{color:var(--g-dk);font-size:15px}.lk-d .t-home .cct small{color:var(--h-sub)}
+.lk-d .t-home .cct b{color:var(--g-dk);font-size:14px;line-height:1.25}.lk-d .t-home .cct small{color:var(--h-sub)}
 .lk-d .t-home .ccgo{background:var(--h-card);color:var(--g-dk);font-weight:600;font-size:14px;border-radius:999px;padding:7px 12px}
 .rts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .rt{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;padding:6px 2px;text-align:center;background:none;border:0;color:var(--t1)}
 .rti{position:relative;display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:var(--ac);color:#fff;font-size:26px}
-.rtt{font-size:13px;font-weight:500;line-height:1.25;color:var(--t2)}
+.rtt{font-size:14.5px;font-weight:600;line-height:1.25;color:var(--t2)}
 .rton{position:absolute;top:-6px;right:-16px;font-style:normal;font-size:11px;font-weight:600;line-height:1;padding:4px 7px;border-radius:999px;background:var(--s1);color:var(--ac);box-shadow:0 0 0 1.5px var(--ac)}
 .lk-d .t-home .rts{gap:10px}
 .lk-d .t-home .rti{width:72px;height:72px;font-size:28px;background:var(--k-g-bg);color:var(--g-ac);box-shadow:none}
-.lk-d .t-home .rtt{color:var(--g-dk);font-weight:600;font-size:13.5px;margin-top:4px}
+.lk-d .t-home .rtt{color:var(--g-dk);font-weight:600;font-size:14px;margin-top:4px}
 .lk-d .t-home .rton{background:var(--h-card);color:var(--g-dk);box-shadow:0 0 0 1.5px var(--g-ac)}
 .rts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.rt{width:auto}
 .lk-d .t-home .rts{gap:12px}
@@ -1526,6 +1526,13 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 .phone:not(.lk-d) .focus .col .tile:nth-child(n) .v.add{color:var(--ac)}
 /* карточка лекарства и события шторкой (D-157) */
 .lk-d .sheet .recin{background:transparent;padding:0}
+/* «Имена» на низком экране (nmFit): компактные кнопки «Подобрать / Все имена» в одну строку */
+.nmcmp .nmgo button{min-height:0!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;padding:9px 12px!important}
+.nmcmp .nmgo .ic0{width:34px!important;height:34px!important;font-size:17px!important}
+.nmcmp .nmgo .on::after,.nmcmp .nmgo .on::before{display:none}
+.nmcmp .nmhead .h2{font-size:24px}
+.nmcmp .nmpb .nmdeck{min-height:0}
+.nmtight .nmc{padding:14px 16px!important}.nmtight .nmc h3{font-size:28px!important;margin:6px 0 2px!important}.nmtight .nmc .nmstr{margin:0 0 6px!important}.nmtight .nmpb .nmmore{padding-top:8px}.nmtight .nmc .nmacts{margin-top:10px;padding-top:10px}
 .recnone{margin:6px 0 4px;padding:10px 12px;border-radius:12px;border:1px dashed var(--bd);font-size:13px;color:var(--t2)}
 .lk-d .recnone{background:var(--h-soft);border-color:var(--h-ring);color:var(--h-sub)}
 .sheet.cardsh{max-height:92%}
@@ -1550,6 +1557,30 @@ textarea.in{min-height:56px;resize:none;font-size:14px}
 /* Чекап: полоска-иллюстрация (D-153) */
 .lk-d .t-chk .chkill{border-radius:22px;overflow:hidden;line-height:0;margin:0 0 14px;aspect-ratio:340/92;background:#eef6e6}
 .lk-d .t-chk .chkill svg{width:100%;height:100%;display:block}
+
+/* ===== Поля ввода: одна высота и ровные ячейки на любом телефоне (D-162) =====
+   Safari на iPhone рисует дату, время и выпадающие списки по-своему: своей высоты и шире ячейки.
+   Поэтому: у полей и списков фиксированная высота --fh, своё оформление вместо системного,
+   а ячейка ряда не даёт полю выйти за край и наехать на соседнее. */
+:root{--fh:48px}
+input.in:not([type=checkbox]):not([type=radio]),select.in{height:var(--fh)!important;min-height:var(--fh)!important;padding-top:0!important;padding-bottom:0!important;line-height:normal;-webkit-appearance:none;appearance:none;display:block;width:100%;min-width:0!important;max-width:100%}
+input.in::-webkit-date-and-time-value{text-align:left;margin:0;min-height:0;line-height:normal}
+input.in::-webkit-datetime-edit{padding:0}
+select.in{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236f7f66' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 10px center!important;background-size:16px 16px!important;padding-right:30px!important;text-overflow:ellipsis;white-space:nowrap}
+.fields{display:grid!important;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:8px}
+.fields>*{min-width:0}
+.fields>.f:has(input[type=date],input[type=time]),.fields>.f:has(select){overflow:hidden}
+/* дата рядом с коротким полем (время, курс) — дате чуть больше места, чтобы «20 нояб. 2026 г.» не обрезалось */
+.fields:has(>.f:first-child input[type=date]){grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);grid-auto-columns:unset;grid-auto-flow:row}
+.trow{grid-template-columns:repeat(2,minmax(0,1fr))}.trow>*{min-width:0}.trow>input{overflow:hidden}
+/* кнопки и плашки в формах и шторках — той же высоты, что поля */
+.tlab,.filein,.tadd,.add button{height:var(--fh)!important;min-height:var(--fh)!important;box-sizing:border-box}
+.tlab{display:flex}
+:is([data-n=form],[data-n=medCard],[data-n=evCard],[data-n=review],.sheet,[data-n]:has(.in)) :is(.btn,.ghost){height:var(--fh);min-height:var(--fh);padding-top:0!important;padding-bottom:0!important;display:flex!important;align-items:center;justify-content:center;gap:6px}
+
+/* подписи над полями — того же размера и цвета, что пояснительный текст экрана (D-163) */
+.lk-d .f label{color:var(--h-sub);font-size:12px;line-height:1.4;margin-bottom:5px}
+:is([data-n],.sheet):has(.f) .banner{font-size:12px!important}
 </style>
 <div class="stage">
 <aside class="side"><h1>Беремняшки</h1><p>Кликабельный прототип. Все данные и документы вымышленные. Камера и распознавание имитируются, напоминания не приходят.</p><p>Обновление страницы начинает всё сначала.</p><p>В «Моём дизайне» пока в прежнем виде: первый вход, просмотр оригинала и камера.</p><p style="margin-top:18px">Вид прототипа:</p><div style="display:flex;gap:6px"><button type="button" class="ghost lkb" data-l="d" style="margin:0">Мой дизайн</button><button type="button" class="ghost lkb" data-l="s" style="margin:0">Простой стиль</button></div><button type="button" class="ghost" id="reset" style="margin-top:12px">Начать сначала</button></aside>
@@ -1720,17 +1751,26 @@ function render(){
  phone.querySelectorAll('[data-sk]').forEach(function(e){var k=e.getAttribute('data-sk');if(App.scroll[k])e.scrollTop=App.scroll[k]});
  if(fid){var e=document.getElementById(fid);if(e){e.focus();try{e.setSelectionRange(ss,ss)}catch(x){}}}
  var inp=document.getElementById('rvinp');if(inp&&!fid){inp.focus();try{inp.setSelectionRange(inp.value.length,inp.value.length)}catch(x){}}
- ctFit();sgFit();palFit();chkHintFit();if(window.requestAnimationFrame)requestAnimationFrame(function(){sgFit();palFit();chkHintFit()});
+ ctFit();sgFit();palFit();chkHintFit();nmFit();if(window.requestAnimationFrame)requestAnimationFrame(function(){sgFit();palFit();chkHintFit();nmFit()});
  if(phone.querySelector('[data-n=sg] .sgfill'))[300,1000,2500].forEach(function(t){setTimeout(sgFit,t)}); /* страховка: пересчитать, когда всё догрузится */
 }
+/* «Имена»: карточка имени целиком помещается на экране — на низких экранах шапка компактнее, второстепенное прячется (оно есть в «Подробнее об имени») */
+function nmFit(){var s=phone.querySelector('[data-n=nm]');if(!s)return;var pb=s.querySelector('.nmpb');
+ s.classList.remove('nmcmp','nmtight');[].forEach.call(s.querySelectorAll('[data-nmfit]'),function(e){e.style.display='';e.removeAttribute('data-nmfit')});
+ if(!pb)return;function ok(){return pb.scrollHeight<=pb.clientHeight+1}
+ function hide(sel,lab){var e=s.querySelector('.nmpb .nmc:not(.nmbk) '+sel)||s.querySelector('.nmpb '+sel);if(!e)return;var l=lab&&e.previousElementSibling;[e,l].forEach(function(x,j){if(x){x.style.display='none';x.setAttribute('data-nmfit',j?'lab':'1')}})}
+ var steps=[function(){s.classList.add('nmcmp')},function(){hide('p.nmswh')},function(){hide('.nmhist')},function(){hide('.nmpop',1)},function(){hide('.nmdim',1)},function(){s.classList.add('nmtight')}];
+ for(var i=0;i<steps.length&&!ok();i++)steps[i]();
+ /* что спрятали раньше, но теперь помещается (например, подсказка после того, как убрали историю), — вернуть */
+ [].forEach.call(s.querySelectorAll('[data-nmfit="1"]'),function(e){var l=e.previousElementSibling;l=l&&l.getAttribute('data-nmfit')=='lab'?l:null;e.style.display='';if(l)l.style.display='';if(!ok()){e.style.display='none';if(l)l.style.display='none'}})}
 /* схватки: в серии показываем столько строк, сколько помещается (D-124) */
 function ctFit(){var bx=phone.querySelectorAll('.ctrows');if(!bx.length)return;var b=bx[bx.length-1],r=b.getBoundingClientRect(),hid=0;
  [].forEach.call(b.children,function(e){e.style.display=''});
  var cut=[].filter.call(b.children,function(e){return e.getBoundingClientRect().bottom>r.bottom+2});cut.forEach(function(e){e.style.display='none'});hid=cut.length;
  var l=b.parentNode.querySelector('.ctall');if(l)l.style.display=hid?'':'none'}
-window.addEventListener('resize',function(){if(typeof phone!='undefined'){ctFit();sgFit();palFit();chkHintFit()}});
+window.addEventListener('resize',function(){if(typeof phone!='undefined'){ctFit();sgFit();palFit();chkHintFit();nmFit()}});
 /* пересчитать строки сахара, когда догрузится шрифт или поменяется размер экрана: иначе строки считаются по «временному» шрифту и внизу остаётся пустота */
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(typeof phone!='undefined'){sgFit();palFit();chkHintFit()}});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(typeof phone!='undefined'){sgFit();palFit();chkHintFit();nmFit()}});
 if(document.fonts&&document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',function(){if(typeof phone!='undefined')sgFit()});
 if(window.ResizeObserver)setTimeout(function(){if(typeof phone!='undefined')new ResizeObserver(function(){sgFit()}).observe(phone)},0);
 function vNav(){var t=App.tab,o=App.sheet&&App.sheet.n=='plus';
@@ -1816,7 +1856,7 @@ TAB.home=function(){var t=term(),h='';
  if(D.pending.length||vis.length||tn.length){h+='<div class="sec">Процессы</div><div class="infos">';
   tn.forEach(function(k){h+='<div class="info trk"><span style="font-size:22px">'+ic(TRK[k].i)+'</span><span class="tx"><b>С этой недели доступен '+TRK[k].n.toLowerCase()+'</b><small>Уже в «Трекерах» ниже</small></span><button type="button" class="go" data-a="trkPlOpen" data-x="'+k+'">Открыть</button><button type="button" class="trkx" data-a="trkPlX" data-x="'+k+'" aria-label="Скрыть">'+ic('x')+'</button></div>'});
   if(D.pending.length){var one=D.pending.length==1;h+='<button type="button" class="info violet" data-a="docPlaque">'+'<span style="font-size:22px">'+ic('file')+'</span><span class="tx"><b>'+(one?'Новый документ':'Новые документы')+'</b><small>'+(one?esc(DOCS[D.pending[0].doc].title):'Загруженные файлы ждут проверки')+'</small></span><span class="go">Проверить</span></button>'}
-  if(vis.length){var m=vis[0];h+='<button type="button" class="info orange" data-a="medPlaque"><span style="font-size:22px">'+ic('pill')+'</span><span class="tx"><b>'+(vis.length>1?'Новые препараты':'Новый препарат')+'</b><small>'+vis.map(function(x){return esc(x.name)}).join(', ')+'</small></span><span class="go">Начать</span></button>'}
+  if(vis.length){var m=vis[0];h+='<button type="button" class="info orange" data-a="medPlaque"><span style="font-size:22px">'+ic('pill')+'</span><span class="tx"><b>'+(vis.length>1?'Новые препараты':'Новый препарат')+'</b><small>'+vis.map(function(x){return esc(x.name)}).join(', ')+'</small></span><span class="go">Начать приём</span></button>'}
   h+='</div>'}
  h+='<div class="sec">Фокус дня</div><div class="focus"><div class="col">'+
   tile('tileBp','pulse','blue','Давление',lb?lb.sys+'/'+lb.dia:'Добавить',lb?'пульс '+(lb.pulse||'—')+' · '+pl(bt.length,'замер','замера','замеров'):'',!lb,false)+
@@ -1828,7 +1868,7 @@ TAB.home=function(){var t=term(),h='';
  /* Блок «Забота»: карточки-занятия в ленте, листается вбок */
  function cc(a,icn,title,val,sub){return '<button type="button" class="cc" data-a="'+a+'"><span class="cci">'+ic(icn)+'</span><span class="cct"><b>'+title+'</b><small>'+sub+'</small></span><span class="ccgo">'+val+ic('right')+'</span></button>'}
  /* Умный порядок: что сегодня ещё не сделано — вперёд, первое место сдвигается раз в день; сделанное сегодня — в конец */
- var cr=[[D.kg.days[TODAY],cc('kgOpen','timer','Упражнения Кегеля','Начать',kgTileSub())],[D.br.days[TODAY],cc('brOpen','leaf','Спокойное дыхание','Начать',brTileSub())],[D.yg.days[TODAY],cc('ygOpen','yoga','Заняться йогой','Начать',ygTileSub())],[false,cc('soonNames','star','Имена для малыша','Выбрать',D.nm.fav.length?'В избранном: '+D.nm.fav.length:'Избранных пока нет')]];
+ var cr=[[D.kg.days[TODAY],cc('kgOpen','timer','Упражнения<br>Кегеля','Начать',kgTileSub())],[D.br.days[TODAY],cc('brOpen','leaf','Спокойное<br>дыхание','Начать',brTileSub())],[D.yg.days[TODAY],cc('ygOpen','yoga','Заняться<br>йогой','Начать',ygTileSub())],[false,cc('soonNames','star','Имена для<br>малыша','Выбрать',D.nm.fav.length?'В избранном: '+D.nm.fav.length:'Избранных пока нет')]];
  var crTodo=cr.filter(function(x){return !x[0]}),crDone=cr.filter(function(x){return x[0]}),crSh=crTodo.length?Math.floor(toD(TODAY).getTime()/864e5)%crTodo.length:0;
  crTodo=crTodo.slice(crSh).concat(crTodo.slice(0,crSh));
  h+='<div class="sec">Активности</div><div class="care" data-drag="1">'+crTodo.concat(crDone).map(function(x){return x[1]}).join('')+'</div>';
@@ -1910,7 +1950,7 @@ A.symEdD=function(){var id=App.sheet.id;D.symList=D.symList.filter(function(s){r
 /* ===== Вопросы к врачу ===== */
 function apLine(){var a=nextAppt();return a?esc(a.doctor||a.title)+', '+ruD(a.d):'без приёма'}
 A.tileQ=function(){UI.q={edit:-1,nw:'',ed:''};sheet('q',{cls:'mh'})};
-SHT.q=function(){return '<button type="button" class="grab" data-grab="qFull|" aria-label="Открыть все вопросы"><i></i></button><h3>Вопросы к врачу</h3><p class="hint">Приём: '+apLine()+'</p><textarea class="in qta" id="i_q_nw" data-b="q.nw" placeholder="Новый вопрос" aria-label="Новый вопрос">'+esc(UI.q.nw)+'</textarea><button type="button" class="btn" data-a="qAdd">Добавить</button><button type="button" class="link" data-a="qFull">Все вопросы ('+D.q.length+')</button>'};
+SHT.q=function(){return '<button type="button" class="grab" data-grab="qFull|" aria-label="Открыть все вопросы"><i></i></button><h3>Вопросы к врачу</h3><p class="hint">Приём: '+apLine()+'</p><div class="f"><label for="i_q_nw">Новый вопрос</label><textarea class="in qta" id="i_q_nw" data-b="q.nw" placeholder="Например, можно ли летать на самолёте?">'+esc(UI.q.nw)+'</textarea></div><button type="button" class="btn" data-a="qAdd">Добавить</button><button type="button" class="link" data-a="qFull">Все вопросы ('+D.q.length+')</button>'};
 A.qFull=function(){App.sheet=null;push('q')};
 A.qAdd=function(){var v=UI.q.nw.trim();if(!v)return;D.q.push(v);UI.q.nw='';toast('Вопрос добавлен')};
 SCR.q=function(){var q=UI.q,h='<div class="h2">Вопросы к врачу</div><p class="hint">Копятся к ближайшему приёму: '+apLine()+'.</p><textarea class="in qta" id="i_q_nw" data-b="q.nw" placeholder="Новый вопрос" aria-label="Новый вопрос">'+esc(q.nw)+'</textarea><button type="button" class="ghost" data-a="qAdd" style="margin:0 0 10px">Добавить</button><p class="hint">Подсказки: «Что значит этот анализ?», «Нужны ли дополнительные обследования?»</p>';
@@ -2552,7 +2592,7 @@ A.medOpen=function(id){var nm=D.newMeds.filter(function(x){return x.id==id})[0],
 SHT.newMed=function(s){var f=UI.f;
  var h='<button type="button" class="grab" data-a="closeSheet" aria-label="Закрыть"><i></i></button><h3 style="margin-bottom:10px">Новый препарат</h3><button type="button" class="prow" data-a="newMedEdit" style="margin-bottom:12px"><span class="ico blue">'+ic('pill')+'</span><span class="tx"><b>'+esc(f.name)+'</b><small>'+esc(doseText(f.doseN,f.doseU))+' · '+esc(f.how.toLowerCase())+(f.by?' · назначил: '+esc(f.by.toLowerCase()):'')+'</small></span><span class="gochev">'+ic('right')+'</span></button>';
  h+=timesBlock('f',true)+'<div class="fields">'+fld('Начало приёма','f.start',{type:'date'})+fld('Курс, дней','f.days',{mode:'numeric',ph:'30'})+'</div>';
- return h+'<div style="margin-top:4px">'+err(f.err)+'<button type="button" class="btn" data-a="newMedAdd" style="margin-top:0">Добавить в Календарь</button></div>'+'<div class="fields" style="margin-top:8px"><button type="button" class="ghost" data-a="medLater" style="flex:1 1 0;margin:0">Напомнить позже</button><button type="button" class="ghost dg" data-a="medNo" style="flex:1 1 0;margin:0">Не буду принимать</button></div>'};
+ return h+'<div style="margin-top:4px">'+err(f.err)+'<button type="button" class="btn" data-a="newMedAdd" style="margin-top:0">Добавить в Календарь</button></div>'+'<div class="fields" style="margin-top:16px"><button type="button" class="ghost" data-a="medLater" style="flex:1 1 0;margin:0">Напомнить позже</button><button type="button" class="ghost dg" data-a="medNo" style="flex:1 1 0;margin:0">Не буду принимать</button></div>'};
 function medCheck(f){if(!f.name.trim())return 'Введите название препарата';var dn=num(f.doseN);if(dn==null||dn<=0)return 'Укажите дозировку, например 1';if(f.times.some(function(t){return !t}))return 'Укажите время каждого приёма';if(!num(f.days))return 'Укажите длительность курса';return ''}
 A.newMedEdit=function(){var id=App.sheet.nid;UI.nmBack=JSON.parse(JSON.stringify(UI.f));UI.f.err='';App.sheet=null;push('form',{type:'m',nedit:id})};
 A.newMedAdd=function(){var id=App.sheet.nid,r=saveMed(null);if(!r)return render();D.newMeds=D.newMeds.filter(function(x){return x.id!=id});App.sheet=null;toast(UI.f.name.trim()+' добавлен в Календарь, напоминания включены')};
@@ -2934,7 +2974,7 @@ A.nOpen=function(id){var n=D.notifs.filter(function(x){return String(x.id)==id})
 /* ===== Профиль (D-40, D-41) ===== */
 A.profile=function(){push('pf')};
 function li(a,x,i,t,val,sub){return '<button type="button" class="li" data-a="'+a+'" data-x="'+(x||'')+'">'+(i?ic(i):'')+'<span class="tx">'+t+(sub?'<small>'+sub+'</small>':'')+'</span>'+(val?'<span class="val">'+val+'</span>':'')+'<span style="color:var(--t3);font-size:16px">'+ic('right')+'</span></button>'}
-SCR.pf=function(){var t=term();return scr('<button type="button" class="phead" data-a="pfEdit"><span>'+av(60)+'</span><span><b>'+esc(D.name)+'</b><small>'+t.text+'</small><small style="color:var(--acl);margin-top:2px">Изменить имя и аватар</small></span></button><div class="pcard"><div class="tp"><span>Срок беременности</span><button type="button" data-a="pfTerm">Изменить</button></div><div class="big">'+t.short+'</div><div class="sub">Считаем '+(D.method=='lmp'?'по последней менструации':'по УЗИ')+', '+dmy(D.lmp)+(D.multi?', многоплодная':'')+'<br>Предполагаемая дата родов: '+dmy(dueDate())+'</div></div><div class="grp">Обо мне</div><div class="list">'+li('pfGo','hw','scale','Рост и вес до беременности')+li('pfGo','docs','user','Мои врачи и роддом')+'</div><div class="grp">Настройки</div><div class="list">'+li('pfGo','tz','clock','Часовой пояс',D.tz.match(/UTC.\d/)[0])+li('pfGo','rem','bell','Напоминания')+(LOOK=='d'?li('pfGo','pals','heart','Лягушонок и цыплёнок',D.tips!==false?'':'Подсказки скрыты'):'')+li('pfGo','theme','sun','Тема',{sys:'Как в телефоне',light:'Светлая',dark:'Тёмная'}[D.theme])+li('pfGo','look','image','Вид прототипа',LOOK=='d'?'Мой дизайн':'Простой стиль','Для сравнения')+'</div><div class="grp">Данные и справка</div><div class="list">'+li('pfGo','data','shield','Данные и конфиденциальность')+li('pfGo','about','info','О приложении и поддержка')+'</div>','Главная')};
+SCR.pf=function(){var t=term();return scr('<button type="button" class="phead" data-a="pfEdit"><span>'+av(60)+'</span><span><b>'+esc(D.name)+'</b><small>'+t.text+'</small><small style="color:var(--acl);margin-top:2px">Изменить имя и аватар</small></span></button><div class="pcard" data-a="pfTerm" role="button" tabindex="0" aria-label="Срок беременности, изменить"><div class="tp"><span>Срок беременности</span><span class="pced">Изменить</span></div><div class="big">'+t.short+'</div><div class="sub">Считаем '+(D.method=='lmp'?'по последней менструации':'по УЗИ')+', '+dmy(D.lmp)+(D.multi?', многоплодная':'')+'<br>Предполагаемая дата родов: '+dmy(dueDate())+'</div></div><div class="grp">Обо мне</div><div class="list">'+li('pfGo','hw','scale','Рост и вес до беременности')+li('pfGo','docs','user','Мои врачи и роддом')+'</div><div class="grp">Настройки</div><div class="list">'+li('pfGo','tz','clock','Часовой пояс',D.tz.match(/UTC.\d/)[0])+li('pfGo','rem','bell','Напоминания')+(LOOK=='d'?li('pfGo','pals','heart','Лягушонок и цыплёнок',D.tips!==false?'':'Подсказки скрыты'):'')+li('pfGo','theme','sun','Тема',{sys:'Как в телефоне',light:'Светлая',dark:'Тёмная'}[D.theme])+li('pfGo','look','image','Вид прототипа',LOOK=='d'?'Мой дизайн':'Простой стиль','Для сравнения')+'</div><div class="grp">Данные и справка</div><div class="list">'+li('pfGo','data','shield','Данные и конфиденциальность')+li('pfGo','about','info','О приложении и поддержка')+'</div>','Главная')};
 A.pfGo=function(x){push('pf_'+x)};
 A.pfTerm=function(){UI.pf={lmp:D.lmp,method:D.method,err:''};sheet('pfTerm')};
 SHT.pfTerm=function(){var u=UI.pf;return '<button type="button" class="grab" data-a="closeSheet" aria-label="Закрыть"><i></i></button><h3>Срок беременности</h3><p class="hint">Измените, если врач скорректировал срок.</p><button type="button" class="opt'+(u.method=='lmp'?' on':'')+'" data-a="pfM" data-x="lmp"><span class="rd"></span>По последней менструации</button><button type="button" class="opt'+(u.method=='us'?' on':'')+'" data-a="pfM" data-x="us" style="margin-bottom:10px"><span class="rd"></span>По УЗИ</button>'+fld('Первый день последней менструации','pf.lmp',{type:'date'})+err(u.err)+'<div class="row" style="border-bottom:0"><div class="tx">Многоплодная беременность<small style="display:block;font-size:11.5px;color:var(--t3)">Двойня и более</small></div><button type="button" class="sw'+(D.multi?' on':'')+'" data-a="pfMulti" aria-pressed="'+D.multi+'" aria-label="Многоплодная беременность"></button></div><button type="button" class="btn" data-a="pfTermS">Сохранить</button>'};
