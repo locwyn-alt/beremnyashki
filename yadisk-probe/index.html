@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Защита: страница может обращаться только к серверам Яндекса. Любая попытка обратиться куда-то ещё будет заблокирована браузером и попадёт в журнал. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src https://cloud-api.yandex.net https://*.yandex.net https://*.yandex.ru; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Проба Диска</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Проба Диска">
+<meta name="theme-color" content="#2f7d55">
+<style>
+  :root { --green:#2f7d55; --green-l:#e8f4ec; --red:#b3261e; --red-l:#fbeaea; --grey:#6b6b6b; --line:#e3e3e3; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color:#1d1d1d; background:#fafaf7;
+         padding: calc(16px + env(safe-area-inset-top)) 16px calc(32px + env(safe-area-inset-bottom)); }
+  main { max-width:560px; margin:0 auto; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .sub { color:var(--grey); font-size:14px; margin:0 0 16px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px; margin-bottom:12px; }
+  .card h2 { font-size:16px; margin:0 0 8px; display:flex; gap:8px; align-items:center; }
+  .num { display:inline-flex; width:26px; height:26px; border-radius:50%; background:var(--green-l); color:var(--green); align-items:center; justify-content:center; font-size:14px; font-weight:600; flex:none; }
+  button { width:100%; min-height:48px; border:0; border-radius:12px; background:var(--green); color:#fff; font:inherit; font-weight:600; cursor:pointer; }
+  button.sec { background:#fff; color:var(--green); border:1px solid var(--green); font-weight:500; }
+  button.link { background:none; color:var(--grey); min-height:40px; font-weight:400; text-decoration:underline; }
+  button:disabled { opacity:.45; cursor:default; }
+  .row { display:flex; gap:8px; margin-top:8px; }
+  .row > * { flex:1; }
+  input { width:100%; min-height:48px; border:1px solid var(--line); border-radius:12px; padding:0 12px; font:inherit; background:#fff; }
+  code.box { display:block; word-break:break-all; background:#f3f3ef; border-radius:10px; padding:10px 12px; font-size:14px; }
+  .status { margin-top:10px; font-size:14px; min-height:20px; }
+  .ok { color:var(--green); } .bad { color:var(--red); } .muted { color:var(--grey); }
+  .note { background:var(--red-l); color:var(--red); border-radius:12px; padding:10px 12px; font-size:14px; margin-top:10px; }
+  .hint { color:var(--grey); font-size:14px; margin:6px 0 0; }
+  ol.log { padding-left:20px; margin:8px 0 0; font-size:13px; }
+  ol.log li { margin-bottom:6px; word-break:break-word; }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Проба Яндекс Диска</h1>
+  <p class="sub">Тестовая страница «Беремняшек» (M-28). Здесь нет никаких данных о здоровье, только случайный тестовый файл. Страница обращается только к Яндексу.</p>
+
+  <div class="card">
+    <h2><span class="num">i</span>Где открыта страница</h2>
+    <div id="env" class="muted"></div>
+  </div>
+
+  <!-- Настройка: показывается, пока не вставлен ClientID -->
+  <div class="card" id="setup">
+    <h2><span class="num">0</span>Настройка</h2>
+    <p class="hint" style="margin-top:0">Этот адрес нужно вставить в Яндексе в поле «Redirect URI» — один в один:</p>
+    <code class="box" id="redirect"></code>
+    <div class="row"><button class="sec" id="copyRedirect">Скопировать адрес</button></div>
+    <p class="hint">ClientID (берётся в Яндексе после регистрации приложения):</p>
+    <div class="row"><input id="clientIdInput" placeholder="например, 1a2b3c4d…" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+    <div class="row"><button class="sec" id="saveClientId">Запомнить ClientID</button></div>
+    <div class="status" id="setupStatus"></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">1</span>Подключить Яндекс Диск</h2>
+    <button id="connect">Подключить Яндекс Диск</button>
+    <div class="status" id="s1"></div>
+    <div id="redirectNote" class="note hidden"></div>
+    <div class="row"><button class="link" id="connectPopup">Не получилось? Другой способ — в отдельном окошке</button></div>
+    <div class="row"><button class="link" id="disconnect">Отключить (забыть вход на этом телефоне)</button></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">2</span>Сохранить тестовый файл</h2>
+    <button id="save">Сохранить тестовый файл</button>
+    <p class="hint">Случайный файл 256 КБ — так выглядит зашифрованная копия.</p>
+    <div class="status" id="s2"></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">3</span>Прочитать обратно</h2>
+    <button id="read">Прочитать обратно</button>
+    <div class="status" id="s3"></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">4</span>Удалить</h2>
+    <button id="del">Удалить</button>
+    <div class="status" id="s4"></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">✓</span>Куда обращалась страница</h2>
+    <div id="hosts" class="muted">Пока никуда.</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">≡</span>Журнал</h2>
+    <button class="sec" id="copyReport">Скопировать отчёт</button>
+    <p class="hint">В отчёте нет пропуска к Диску и личных данных — его можно прислать Claude.</p>
+    <ol class="log" id="log"></ol>
+    <div class="row"><button class="link" id="clearLog">Очистить журнал</button></div>
+  </div>
+</main>
+
+<script>
+"use strict";
+
+// ====== ЕДИНСТВЕННОЕ МЕСТО, КОТОРОЕ МОЖНО ПОМЕНЯТЬ ======
+// Вставь между кавычками ClientID из Яндекса. Можно и не менять —
+// тогда ClientID вводится на самой странице (на каждом телефоне один раз).
+const CLIENT_ID = "";
+// =========================================================
+
+const API = "https://cloud-api.yandex.net/v1/disk";
+const FILE_PATH = "app:/probe-test.bin";
+const FILE_SIZE = 256 * 1024;
+const K = { token:"yp_token", exp:"yp_exp", client:"yp_client", state:"yp_state", hash:"yp_hash", size:"yp_size", log:"yp_log" };
+
+const $ = (id) => document.getElementById(id);
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  del(k) { try { localStorage.removeItem(k); } catch (e) {} }
+};
+
+// ---------- где открыта страница ----------
+const isHome = (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || window.navigator.standalone === true;
+const MODE = isHome ? "home" : "browser";
+const MODE_RU = isHome ? "с экрана «Домой» (как приложение)" : "в обычном браузере";
+const REDIRECT_URI = location.origin + location.pathname.replace(/index\.html$/, "");
+
+function browserName() {
+  const ua = navigator.userAgent;
+  const os = /iPhone|iPad|iPod/.test(ua) ? "iPhone/iPad" : /Android/.test(ua) ? "Android" : /Windows/.test(ua) ? "Windows" : /Mac OS X/.test(ua) ? "Mac" : "другая система";
+  let br = "браузер";
+  if (/YaBrowser/.test(ua)) br = "Яндекс Браузер";
+  else if (/EdgA?\//.test(ua)) br = "Edge";
+  else if (/CriOS|Chrome\//.test(ua)) br = "Chrome";
+  else if (/FxiOS|Firefox\//.test(ua)) br = "Firefox";
+  else if (/Safari\//.test(ua)) br = "Safari";
+  return os + ", " + br;
+}
+
+// ---------- журнал ----------
+let LOG = [];
+try { LOG = JSON.parse(store.get(K.log) || "[]"); } catch (e) { LOG = []; }
+function log(step, ok, msg) {
+  const t = new Date();
+  LOG.push({ t: t.toISOString(), mode: MODE, step, ok, msg });
+  if (LOG.length > 200) LOG = LOG.slice(-200);
+  store.set(K.log, JSON.stringify(LOG));
+  renderLog();
+}
+function renderLog() {
+  const ol = $("log"); ol.innerHTML = "";
+  LOG.slice().reverse().forEach((e) => {
+    const li = document.createElement("li");
+    const time = new Date(e.t).toLocaleTimeString("ru-RU");
+    li.className = e.ok === true ? "ok" : e.ok === false ? "bad" : "muted";
+    li.textContent = time + " · " + (e.mode === "home" ? "Домой" : "браузер") + " · " + e.step + ": " + e.msg;
+    ol.appendChild(li);
+  });
+}
+function setStatus(id, ok, text) {
+  const el = $(id);
+  el.className = "status " + (ok === true ? "ok" : ok === false ? "bad" : "muted");
+  el.textContent = (ok === true ? "✓ " : ok === false ? "✗ " : "") + text;
+}
+
+// ---------- учёт адресов, к которым обращалась страница ----------
+const HOSTS = new Set();
+function noteHost(url) {
+  try { HOSTS.add(new URL(url).host); } catch (e) {}
+  renderHosts();
+}
+function renderHosts() {
+  if (!HOSTS.size) return;
+  const list = Array.from(HOSTS);
+  const foreign = list.filter((h) => !/(^|\.)yandex\.(net|ru|com)$/.test(h));
+  $("hosts").innerHTML = "";
+  const p = document.createElement("div");
+  p.className = foreign.length ? "bad" : "ok";
+  p.textContent = foreign.length ? "✗ Есть обращения не к Яндексу: " + foreign.join(", ") : "✓ Только серверы Яндекса — сервер владелицы не участвует.";
+  const q = document.createElement("div");
+  q.className = "hint"; q.textContent = list.join(" · ");
+  $("hosts").append(p, q);
+}
+document.addEventListener("securitypolicyviolation", (e) => {
+  log("Защита", false, "браузер заблокировал обращение к " + (e.blockedURI || "?") + " (" + e.violatedDirective + ")");
+});
+
+// ---------- простые объяснения ошибок ----------
+function explain(err, status, body) {
+  if (err) {
+    return "Браузер не пропустил ответ сервера. Чаще всего это значит, что Яндекс не разрешает такой запрос со сторонних сайтов (по-программистски — CORS). Реже — пропал интернет. Проверь интернет и нажми ещё раз; если повторяется — это и есть ответ пробы. [" + (err.name || "") + ": " + (err.message || err) + "]";
+  }
+  const code = body && (body.error || "");
+  const map = {
+    400: "Яндекс не понял запрос.",
+    401: "Яндекс не принял пропуск (токен): он устарел или неверный. Нажми «Подключить» ещё раз.",
+    403: "Нет прав. Проверь, что в приложении в Яндексе выбран доступ «Доступ к папке приложения на Диске».",
+    404: "Файла нет. Сначала нажми «Сохранить тестовый файл».",
+    409: "Конфликт: файл или папка уже есть / ещё нет.",
+    413: "Файл слишком большой для Диска.",
+    423: "Диск временно не принимает загрузки (технические работы или лимит).",
+    429: "Слишком много запросов. Подожди минуту.",
+    503: "Диск временно недоступен. Попробуй позже.",
+    507: "На Диске закончилось место."
+  };
+  let s = map[status] || (status >= 500 ? "Ошибка на стороне Яндекса. Попробуй позже." : "Неожиданный ответ.");
+  return s + " [код " + status + (code ? ", " + code : "") + "]";
+}
+
+// ---------- токен ----------
+function token() {
+  const t = store.get(K.token), exp = Number(store.get(K.exp) || 0);
+  if (!t) return null;
+  if (exp && Date.now() > exp) { store.del(K.token); return null; }
+  return t;
+}
+function clientId() { return CLIENT_ID || store.get(K.client) || ""; }
+
+function randomHex(n) {
+  const a = new Uint8Array(n); crypto.getRandomValues(a);
+  return Array.from(a, (b) => b.toString(16).padStart(2, "0")).join("");
+}
+function authUrl(kind) {
+  const state = kind + "." + MODE + "." + randomHex(8);
+  store.set(K.state, state);
+  const u = "https://oauth.yandex.ru/authorize?response_type=token" +
+    "&client_id=" + encodeURIComponent(clientId()) +
+    "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
+    "&state=" + encodeURIComponent(state) +
+    "&force_confirm=yes";
+  noteHost(u);
+  return u;
+}
+
+function needClient() {
+  if (clientId()) return false;
+  setStatus("s1", false, "Сначала вставь ClientID в блоке «Настройка».");
+  $("setup").scrollIntoView({ behavior: "smooth" });
+  return true;
+}
+
+$("connect").onclick = () => {
+  if (needClient()) return;
+  log("Подключение", null, "ухожу на страницу входа Яндекса (в этом же окне)");
+  location.href = authUrl("redirect");
+};
+
+$("connectPopup").onclick = () => {
+  if (needClient()) return;
+  log("Подключение", null, "открываю вход Яндекса в отдельном окошке");
+  const w = window.open(authUrl("popup"), "yp_auth", "width=520,height=680");
+  if (!w) { setStatus("s1", false, "Браузер не дал открыть окошко."); log("Подключение", false, "окошко заблокировано браузером"); }
+};
+
+window.addEventListener("message", (e) => {
+  if (e.origin !== location.origin || !e.data || e.data.type !== "yp_token") return;
+  acceptToken(e.data, "через окошко");
+});
+window.addEventListener("storage", (e) => {
+  if (e.key === K.token && e.newValue) afterConnected("через окошко (общая память)");
+});
+
+$("disconnect").onclick = () => {
+  store.del(K.token); store.del(K.exp);
+  setStatus("s1", null, "Вход забыт на этом телефоне. Чтобы забрать доступ совсем — Яндекс ID → Безопасность → Входы и устройства.");
+  log("Подключение", null, "вход забыт на этом устройстве");
+};
+
+function acceptToken(d, how) {
+  if (!d.access_token) return;
+  store.set(K.token, d.access_token);
+  if (d.expires_in) store.set(K.exp, String(Date.now() + Number(d.expires_in) * 1000));
+  afterConnected(how);
+}
+
+// Разбор ответа Яндекса после входа (он приходит после знака # в адресе)
+function handleRedirect() {
+  if (!location.hash || location.hash.length < 2) return false;
+  const p = new URLSearchParams(location.hash.slice(1));
+  if (!p.has("access_token") && !p.has("error")) return false;
+  handleRedirectInner(p);
+  return true;
+}
+function handleRedirectInner(p) {
+  history.replaceState(null, "", location.pathname + location.search); // убираем токен из адреса
+  const state = p.get("state") || "";
+  const [kind, startedIn] = state.split(".");
+  const saved = store.get(K.state);
+  const d = { access_token: p.get("access_token"), expires_in: p.get("expires_in"), state };
+
+  if (p.has("error")) {
+    const msg = p.get("error") === "access_denied" ? "ты нажала «Отмена» на странице Яндекса" : (p.get("error") + " " + (p.get("error_description") || ""));
+    setStatus("s1", false, "Яндекс не выдал доступ: " + msg);
+    log("Подключение", false, "Яндекс вернул ошибку: " + msg);
+    return;
+  }
+
+  // Ответ пришёл во всплывающее окошко — передаём его основной странице
+  if (kind === "popup" && window.opener && !window.opener.closed) {
+    try { window.opener.postMessage({ type: "yp_token", ...d }, location.origin); } catch (e) {}
+    store.set(K.token, d.access_token);
+    if (d.expires_in) store.set(K.exp, String(Date.now() + Number(d.expires_in) * 1000));
+    document.body.innerHTML = '<main><div class="card"><h2>Готово</h2><p>Можно закрыть это окошко и вернуться на страницу пробы.</p></div></main>';
+    setTimeout(() => window.close(), 600);
+    return;
+  }
+
+  if (startedIn && startedIn !== MODE) {
+    const where = startedIn === "home" ? "с экрана «Домой»" : "в браузере";
+    const note = "Вход начат " + where + ", а Яндекс вернул тебя " + MODE_RU + ". Значит, этим способом войти " + where + " не получается: пропуск остался здесь, а не там, где начали.";
+    $("redirectNote").textContent = note; $("redirectNote").classList.remove("hidden");
+    log("Подключение", false, note);
+  } else if (!saved) {
+    log("Подключение", null, "ответ Яндекса пришёл, но эта страница не начинала вход (другая память браузера)");
+  }
+  if (saved && saved !== state) log("Подключение", null, "метка входа не совпала (старый вход?) — всё равно сохраняю");
+  store.del(K.state);
+  acceptToken(d, kind === "popup" ? "окошко открылось как обычная вкладка" : "в этом же окне");
+}
+
+// ---------- запросы к Диску ----------
+async function call(method, url, opts) {
+  opts = opts || {};
+  noteHost(url);
+  const headers = Object.assign({}, opts.headers || {});
+  if (opts.auth !== false) headers["Authorization"] = "OAuth " + token();
+  if (opts.json) headers["Accept"] = "application/json";
+  let res;
+  try {
+    res = await fetch(url, { method, headers, body: opts.body, redirect: "follow", cache: "no-store", credentials: "omit", referrerPolicy: "no-referrer" });
+  } catch (err) {
+    return { err };
+  }
+  if (res.url && res.url !== url) noteHost(res.url);
+  return { res };
+}
+async function bodyJson(res) { try { return await res.json(); } catch (e) { return null; } }
+function needToken(sid) {
+  if (token()) return false;
+  setStatus(sid, false, "Сначала шаг 1: подключи Яндекс Диск.");
+  return true;
+}
+
+let lastConnect = 0;
+async function afterConnected(how) {
+  if (Date.now() - lastConnect < 3000) return; // окошко сообщает о входе дважды — проверяем один раз
+  lastConnect = Date.now();
+  setStatus("s1", null, "Проверяю доступ…");
+  const r = await call("GET", API + "/resources?path=" + encodeURIComponent("app:/") + "&limit=5", { json: true });
+  if (r.err || !r.res.ok) {
+    const b = r.res ? await bodyJson(r.res) : null;
+    const m = explain(r.err, r.res && r.res.status, b);
+    setStatus("s1", false, "Вход есть, но к Диску обратиться не удалось. " + m);
+    log("Подключение", false, "вход " + how + ", но запрос к API Диска не прошёл: " + m);
+    return;
+  }
+  const b = await bodyJson(r.res);
+  const folder = b && b.path ? b.path.replace(/^disk:/, "") : "папка приложения";
+  setStatus("s1", true, "Подключено. Папка на Диске: " + folder);
+  log("Подключение", true, "вход " + how + ", папка " + folder);
+}
+
+async function sha256hex(buf) {
+  const h = await crypto.subtle.digest("SHA-256", buf);
+  return Array.from(new Uint8Array(h), (b) => b.toString(16).padStart(2, "0")).join("");
+}
+function makeBytes() {
+  const a = new Uint8Array(FILE_SIZE);
+  for (let i = 0; i < a.length; i += 65536) crypto.getRandomValues(a.subarray(i, Math.min(i + 65536, a.length)));
+  return a;
+}
+
+$("save").onclick = async () => {
+  if (needToken("s2")) return;
+  const btn = $("save"); btn.disabled = true;
+  try {
+    setStatus("s2", null, "Готовлю файл…");
+    const bytes = makeBytes();
+    const hash = await sha256hex(bytes);
+    const blob = new Blob([bytes], { type: "application/octet-stream" }); // Blob, не base64
+    const t0 = performance.now();
+
+    // 1) спрашиваем у Диска адрес для загрузки
+    setStatus("s2", null, "Прошу у Диска адрес для загрузки…");
+    const r1 = await call("GET", API + "/resources/upload?path=" + encodeURIComponent(FILE_PATH) + "&overwrite=true", { json: true });
+    if (r1.err || !r1.res.ok) {
+      const m = explain(r1.err, r1.res && r1.res.status, r1.res ? await bodyJson(r1.res) : null);
+      setStatus("s2", false, "Не удалось получить адрес загрузки. " + m);
+      log("Сохранение", false, "шаг «адрес загрузки»: " + m); return;
+    }
+    const link = await bodyJson(r1.res);
+
+    // 2) отправляем сам файл по этому адресу (без токена — адрес уже одноразовый)
+    setStatus("s2", null, "Отправляю файл…");
+    const r2 = await call(link.method || "PUT", link.href, { auth: false, body: blob });
+    if (r2.err || !(r2.res.status === 201 || r2.res.status === 202 || r2.res.ok)) {
+      const m = explain(r2.err, r2.res && r2.res.status, null);
+      setStatus("s2", false, "Файл не ушёл. " + m);
+      log("Сохранение", false, "шаг «отправка файла» (" + hostOf(link.href) + "): " + m); return;
+    }
+    const ms = Math.round(performance.now() - t0);
+    store.set(K.hash, hash); store.set(K.size, String(FILE_SIZE));
+
+    // 3) сверяем с тем, что Диск говорит о файле
+    let check = "";
+    for (let i = 0; i < 4; i++) {
+      const r3 = await call("GET", API + "/resources?path=" + encodeURIComponent(FILE_PATH) + "&fields=size,sha256,path", { json: true });
+      if (r3.res && r3.res.ok) {
+        const info = await bodyJson(r3.res);
+        if (info && info.sha256) {
+          check = (info.size === FILE_SIZE && info.sha256 === hash) ? "Диск подтвердил: размер и отпечаток совпадают." : "Внимание: Диск видит файл, но отпечаток не совпал.";
+          break;
+        }
+      }
+      await new Promise((ok) => setTimeout(ok, 800));
+    }
+    const good = !check.startsWith("Внимание");
+    setStatus("s2", good, "Файл сохранён за " + ms + " мс. " + (check || "Диск пока не показал отпечаток — это не страшно, проверим на шаге 3."));
+    log("Сохранение", good, "201 Created, " + (FILE_SIZE / 1024) + " КБ за " + ms + " мс, загрузчик " + hostOf(link.href) + ". " + check);
+  } finally { btn.disabled = false; }
+};
+
+function hostOf(u) { try { return new URL(u).host; } catch (e) { return "?"; } }
+
+$("read").onclick = async () => {
+  if (needToken("s3")) return;
+  const btn = $("read"); btn.disabled = true;
+  try {
+    setStatus("s3", null, "Прошу у Диска адрес для скачивания…");
+    const t0 = performance.now();
+    const r1 = await call("GET", API + "/resources/download?path=" + encodeURIComponent(FILE_PATH), { json: true });
+    if (r1.err || !r1.res.ok) {
+      const m = explain(r1.err, r1.res && r1.res.status, r1.res ? await bodyJson(r1.res) : null);
+      setStatus("s3", false, "Не удалось получить адрес скачивания. " + m);
+      log("Чтение", false, "шаг «адрес скачивания»: " + m); return;
+    }
+    const link = await bodyJson(r1.res);
+
+    // Пробуем два способа: без токена (обычно хватает) и с токеном
+    const tries = [{ name: "без токена", auth: false }, { name: "с токеном", auth: true }];
+    const fails = [];
+    for (const tr of tries) {
+      setStatus("s3", null, "Скачиваю (" + tr.name + ")…");
+      const r2 = await call("GET", link.href, { auth: tr.auth });
+      if (r2.err || !r2.res.ok) {
+        fails.push(tr.name + ": " + explain(r2.err, r2.res && r2.res.status, null));
+        continue;
+      }
+      const buf = await r2.res.arrayBuffer();
+      const ms = Math.round(performance.now() - t0);
+      const hash = await sha256hex(buf);
+      const want = store.get(K.hash);
+      const finalHost = hostOf(r2.res.url || link.href);
+      let msg, ok;
+      if (!want) { ok = true; msg = "Файл прочитан (" + buf.byteLength + " байт), но на этом телефоне нет отпечатка для сверки — его сохраняли с другого устройства."; }
+      else if (hash === want) { ok = true; msg = "Файл прочитан и совпадает байт в байт (" + Math.round(buf.byteLength / 1024) + " КБ за " + ms + " мс)."; }
+      else { ok = false; msg = "Файл прочитан, но НЕ совпадает с сохранённым."; }
+      setStatus("s3", ok, msg);
+      log("Чтение", ok, "способ «" + tr.name + "», хранилище " + finalHost + ". " + msg + (fails.length ? " До этого не вышло — " + fails.join("; ") : ""));
+      return;
+    }
+    setStatus("s3", false, "Прочитать не удалось ни одним способом. " + fails[0]);
+    log("Чтение", false, "адрес скачивания " + hostOf(link.href) + ". " + fails.join(" | "));
+  } finally { btn.disabled = false; }
+};
+
+$("del").onclick = async () => {
+  if (needToken("s4")) return;
+  const btn = $("del"); btn.disabled = true;
+  try {
+    setStatus("s4", null, "Удаляю…");
+    const r1 = await call("DELETE", API + "/resources?path=" + encodeURIComponent(FILE_PATH) + "&permanently=true", { json: true });
+    if (r1.err || !(r1.res.status === 204 || r1.res.status === 202)) {
+      const m = explain(r1.err, r1.res && r1.res.status, r1.res ? await bodyJson(r1.res) : null);
+      setStatus("s4", false, "Не удалилось. " + m);
+      log("Удаление", false, m); return;
+    }
+    if (r1.res.status === 202) { // Диск удаляет не сразу — ждём
+      const op = await bodyJson(r1.res);
+      for (let i = 0; op && op.href && i < 15; i++) {
+        await new Promise((ok) => setTimeout(ok, 1000));
+        const r = await call("GET", op.href, { json: true });
+        const s = r.res && r.res.ok ? await bodyJson(r.res) : null;
+        if (s && s.status === "success") break;
+        if (s && s.status === "failed") { setStatus("s4", false, "Диск сообщил, что удалить не получилось."); log("Удаление", false, "операция failed"); return; }
+      }
+    }
+    const r2 = await call("GET", API + "/resources?path=" + encodeURIComponent(FILE_PATH), { json: true });
+    if (r2.res && r2.res.status === 404) {
+      store.del(K.hash); store.del(K.size);
+      setStatus("s4", true, "Удалено насовсем (не в Корзину). Диск подтвердил, что файла больше нет.");
+      log("Удаление", true, "код " + r1.res.status + ", повторная проверка — 404 (файла нет)");
+    } else {
+      setStatus("s4", false, "Команда прошла, но Диск всё ещё видит файл.");
+      log("Удаление", false, "после удаления проверка вернула " + (r2.res ? r2.res.status : "ошибку сети"));
+    }
+  } finally { btn.disabled = false; }
+};
+
+// ---------- настройка, отчёт ----------
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+  const ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", "");
+  ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select();
+  let ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+  ta.remove(); return ok;
+}
+
+$("copyRedirect").onclick = async () => {
+  const ok = await copyText(REDIRECT_URI);
+  setStatus("setupStatus", ok, ok ? "Адрес скопирован." : "Не скопировалось — выдели адрес пальцем и скопируй вручную.");
+};
+$("saveClientId").onclick = () => {
+  const v = $("clientIdInput").value.trim();
+  if (!/^[0-9a-f]{32}$/i.test(v)) { setStatus("setupStatus", false, "Похоже, это не ClientID: он состоит из 32 латинских букв и цифр."); return; }
+  store.set(K.client, v);
+  setStatus("setupStatus", true, "ClientID запомнен на этом телефоне.");
+  log("Настройка", true, "ClientID введён на странице");
+};
+
+$("copyReport").onclick = async () => {
+  const lines = [
+    "Отчёт пробы Яндекс Диска (M-28)",
+    "Дата: " + new Date().toLocaleString("ru-RU"),
+    "Устройство: " + browserName() + ", открыто " + MODE_RU,
+    "Адрес страницы: " + REDIRECT_URI,
+    "Обращения: " + (Array.from(HOSTS).join(", ") || "—"),
+    "Техническое: " + navigator.userAgent,
+    "",
+    "Журнал (по порядку):"
+  ];
+  LOG.forEach((e) => lines.push((e.ok === true ? "✓ " : e.ok === false ? "✗ " : "· ") + new Date(e.t).toLocaleString("ru-RU") + " [" + (e.mode === "home" ? "Домой" : "браузер") + "] " + e.step + ": " + e.msg));
+  const ok = await copyText(lines.join("\n"));
+  alert(ok ? "Отчёт скопирован. Вставь его в чат с Claude." : "Не получилось скопировать. Сделай снимок экрана журнала.");
+};
+$("clearLog").onclick = () => { LOG = []; store.set(K.log, "[]"); renderLog(); };
+
+// ---------- запуск ----------
+$("env").textContent = browserName() + ", открыто " + MODE_RU + ".";
+$("redirect").textContent = REDIRECT_URI;
+if (CLIENT_ID) $("setup").classList.add("hidden");
+else if (store.get(K.client)) { $("clientIdInput").value = store.get(K.client); setStatus("setupStatus", true, "ClientID уже запомнен на этом телефоне."); }
+renderLog();
+const cameFromYandex = handleRedirect();
+if (token() && !cameFromYandex) setStatus("s1", true, "Подключено ранее на этом устройстве.");
+if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
+</script>
+</body>
+</html>
