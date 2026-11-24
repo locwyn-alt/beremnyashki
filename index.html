@@ -1794,7 +1794,7 @@ select.in{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 .obdots button{position:relative}.obdots button::before{content:'';position:absolute;left:-4px;right:-4px;top:-18px;bottom:-18px}
 .ob .link{position:relative}.ob .link::after{content:'';position:absolute;left:0;right:0;top:0;height:44px}
 .ob:not(.x) .obbot .link{margin-bottom:0}
-@media (max-height:620px){.ob.obcs .obin>.obbig{display:none}.ob.obl.obcs .obin>h1.obc{margin-top:4px!important}}
+.ob.obcs.obnosh .obin>.obbig{display:none}.ob.obl.obcs.obnosh .obin>h1.obc{margin-top:4px!important}
 .phone:not(.lk-d) .obskip{background:none;box-shadow:none;padding:0 2px;min-height:44px;font-size:13px;font-weight:400;color:var(--ac);display:inline-flex;align-items:center}
 .phone:not(.lk-d) .ob .btn,.phone:not(.lk-d) .ob~.shade .btn,.phone:not(.lk-d) .ob~.shade .ghost{min-height:48px;display:flex;align-items:center;justify-content:center}
 
@@ -1808,6 +1808,9 @@ select.in{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 .ob.obl .obbot.obln{border-top-color:var(--bds)}.lk-d .ob.obl .obbot.obln{border-top-color:rgba(112,166,80,.28)}
 /* 24.11: экран «На экран телефона» на низких экранах без вступительного абзаца */
 @media (max-height:620px){.obsfs .obsfi{display:none}}
+
+/* 24.11 (D-232): пустое обязательное поле срока после нажатия «Готово» */
+.ob .in[data-need]{border-color:var(--wf)!important;box-shadow:0 0 0 3px var(--wb)}
 </style>
 <div class="stage">
 <aside class="side"><h1 class="brand">Беремняшки</h1><p>Кликабельный прототип. Все данные и документы вымышленные. Камера и распознавание имитируются, напоминания не приходят.</p><p>Обновление страницы начинает всё сначала.</p><p>Первый вход начинается так, будто ссылку открыли в Safari на iPhone. Копию и ключ из 12 слов приложение предлагает после первой записи. Android: Профиль → «О приложении» → «Где открыто».</p><p>В «Моём дизайне» пока в прежнем виде: первый вход, просмотр оригинала и камера.</p><p style="margin-top:18px">Вид прототипа:</p><div style="display:flex;gap:6px"><button type="button" class="ghost lkb" data-l="d" style="margin:0">Мой дизайн</button><button type="button" class="ghost lkb" data-l="s" style="margin:0">Простой стиль</button></div><button type="button" class="ghost" id="reset" style="margin-top:12px">Начать сначала</button></aside>
@@ -2070,7 +2073,9 @@ function vObIntro(o){var k=o.sl||0,last=k==OBSL.length-1;
  return obLay('obi',obBk(k>0?'obSl':'',k>0?k-1:null)+(last?'<span></span>':'<button type="button" class="obskip" data-a="obSkip">Пропустить</button>'),OBART[k]()+'<div class="stk">'+OBSL.map(function(x,j){return '<div class="stx'+(j==k?'':' gh')+'"'+(j==k?'':' aria-hidden="true"')+'><h1 class="obc">'+x.t+'</h1><p class="obip">'+x.p+'</p></div>'}).join('')+'</div>','<div class="obdots">'+OBSL.map(function(_,j){return '<button type="button" class="'+(j==k?'on':'')+'" data-a="obSl" data-x="'+j+'" aria-label="Шаг '+(j+1)+' из '+OBSL.length+'"'+(j==k?' aria-current="step"':'')+'></button>'}).join('')+'</div><button type="button" class="btn" data-a="obSlNext">'+(last?'Начать':'Дальше')+'</button>')}
 A.obSl=function(x){UI.ob.sl=+x;render()};
 /* 24.11: полоска над нижними кнопками первого входа появляется, только когда под ними есть спрятанное содержимое */
-function obEdge(){var ob=phone.querySelector('.ob.obl');if(!ob)return;var bb=ob.querySelector('.obbot'),inn=ob.querySelector('.obin');if(!bb||!inn)return;var k=inn.lastElementChild;while(k&&!k.getBoundingClientRect().height)k=k.previousElementSibling;bb.classList.toggle('obln',!!k&&k.getBoundingClientRect().bottom>bb.getBoundingClientRect().top+1)}
+function obHidden(ob){var bb=ob.querySelector('.obbot'),inn=ob.querySelector('.obin');if(!bb||!inn)return false;var k=inn.lastElementChild;while(k&&!k.getBoundingClientRect().height)k=k.previousElementSibling;return !!k&&k.getBoundingClientRect().bottom>bb.getBoundingClientRect().top+1}
+/* 24.11 (D-233): щит на согласии показываем, только если вместе с ним всё помещается на экране */
+function obEdge(){var ob=phone.querySelector('.ob.obl');if(!ob)return;var bb=ob.querySelector('.obbot');if(!bb)return;if(ob.classList.contains('obcs')){var st=ob.scrollTop;if(ob.querySelector('.obbot .err')){ob.classList.toggle('obnosh',!!UI.ob.nosh)}else{ob.classList.remove('obnosh');if(obHidden(ob))ob.classList.add('obnosh');UI.ob.nosh=ob.classList.contains('obnosh')}ob.scrollTop=st}bb.classList.toggle('obln',obHidden(ob))}
 phone.addEventListener('scroll',function(e){if(e.target&&e.target.classList&&e.target.classList.contains('ob'))obEdge()},true);
 window.addEventListener('resize',obEdge);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(obEdge);
 /* 24.11: слайды листаются пальцем */
@@ -2106,17 +2111,21 @@ function vOnboarding(){var o=UI.ob;var nx=vObNew(o);if(nx)return nx;
  if(o.step==1)return obLay('obcs',obBk('obTo',o.prev||'was'),'<div class="obbig g">'+ic('shield')+'</div><h1 class="obc">Безопасность и приватность</h1><p class="obip">Три главных правила, прежде чем начать.</p><div class="obst obcon"><div class="obs"><span class="obv">'+ic('lock')+'</span><span class="tx">Данные хранятся только у вас<small>Копию вы сохраняете сами: на свой Яндекс Диск или файлом на устройство.</small></span></div><div class="obs"><span class="obv">'+ic('shield')+'</span><span class="tx">Мы не видим ваши документы<small>Анализы, заключения и прочие файлы видны с вашего устройства, мы их не получаем.</small></span></div><div class="obs"><span class="obv">'+ic('trash')+'</span><span class="tx">Удалить можно в любой момент<small>Профиль → «Данные и конфиденциальность».</small></span></div></div><p class="obnote">Приложение справочное и не заменяет врача.</p><button type="button" class="link ul" style="padding:4px 0 10px" data-a="toastA" data-x="Здесь откроется политика конфиденциальности">Политика конфиденциальности</button>',err(o.err)+'<div class="'+(o.need&&!o.agree?'obneed':'')+'">'+chk('Согласна на обработку персональных данных и принимаю политику конфиденциальности','ob.agree')+'</div>'+'<button type="button" class="btn'+(o.agree?'':' obdis')+'" data-a="ob1"'+(o.agree?'':' aria-disabled="true"')+'>Продолжить</button><button type="button" class="link" data-a="obNo">Не соглашаюсь</button>');
  return obLay('obterm',obBk('obBack'),'<div class="obbig y">'+ic('cal')+'</div><h1 class="obc">Какой у вас срок?</h1><p class="obip">По нему приложение считает неделю и предполагаемую дату родов. Изменить можно в профиле.</p>'+
  '<button type="button" class="opt'+(o.method=='lmp'?' on':'')+'" data-a="obM" data-x="lmp"><span class="rd"></span>По дате последней менструации</button><button type="button" class="opt'+(o.method=='us'?' on':'')+'" data-a="obM" data-x="us" style="margin-bottom:12px"><span class="rd"></span>По сроку из УЗИ</button>'+
- (o.method=='lmp'?fld('Первый день последней менструации','ob.lmp',{type:'date'}):'<div class="fields">'+fld('Недель','ob.w',{mode:'numeric'})+fld('Дней','ob.dd',{mode:'numeric'})+'</div>'+fld('Дата этого УЗИ','ob.us',{type:'date'})),
- err(o.err)+'<button type="button" class="btn" data-a="ob2">Готово</button>')}
+ obNeed(o,(o.method=='lmp'?fld('Первый день последней менструации','ob.lmp',{type:'date'}):'<div class="fields">'+fld('Недель','ob.w',{mode:'numeric'})+fld('Дней','ob.dd',{mode:'numeric'})+'</div>'+fld('Дата этого УЗИ','ob.us',{type:'date'}))),
+ err(o.err)+'<button type="button" class="btn'+(obTermOk(o)?'':' obdis')+'" data-a="ob2"'+(obTermOk(o)?'':' aria-disabled="true"')+'>Готово</button>')}
+/* 24.11 (D-232): срок — «Готово» бледная, пока срок не указан; при нажатии подсказка и подсветка пустых полей */
+function obTermOk(o){return o.method=='lmp'?!!o.lmp:!!(String(o.w||'').trim()&&o.us)}
+function obNeed(o,h){if(!o.need)return h;['ob.lmp','ob.w','ob.us'].forEach(function(p){if(!String(get(p)||'').trim())h=h.replace('data-b="'+p+'"','data-b="'+p+'" data-need="1"')});return h}
 A.ob1=function(){var o=UI.ob;if(o.agree){o.step=2;o.err='';o.need=false}else{o.err='Отметьте согласие, чтобы продолжить';o.need=true}render()};
 A.obNo=function(){UI.ob.err='';UI.ob.need=false;sheet('obNo')};
 SHT.obNo=function(){return '<button type="button" class="grab" data-a="closeSheet" aria-label="Закрыть"><i></i></button><h3>Продолжить без согласия?</h3><p class="hint">Без согласия приложение не сможет сохранять ваши записи.</p><button type="button" class="btn" data-a="closeSheet">Вернуться</button><button type="button" class="ghost" data-a="obNoGo">Всё равно выйти</button>'};
 A.obNoGo=function(){App.sheet=null;UI.ob.agree=false;UI.ob.err='';if(D.env=='home'){UI.ob.step='was'}else{UI.ob.step='intro';UI.ob.sl=0}render();toast('Прототип: так приложение откроется в следующий раз')};
 A.obBack=function(){UI.ob.step=1;UI.ob.err='';render()};
-A.obM=function(x){UI.ob.method=x;UI.ob.err='';render()};
+A.obM=function(x){UI.ob.method=x;UI.ob.err='';UI.ob.need=false;render()};
 A.ob2=function(){var o=UI.ob,l,w;
- if(o.method=='lmp'){if(!o.lmp){o.err='Введите дату';return render()}l=o.lmp}
- else{w=num(o.w);var dd=num(o.dd)||0;if(w==null||!o.us){o.err='Введите срок и дату УЗИ';return render()}l=addD(o.us,-Math.round(w*7+dd))}
+ if(!obTermOk(o)){o.need=true;o.err=o.method=='lmp'?'Укажите дату, чтобы посчитать срок':'Укажите срок и дату УЗИ, чтобы посчитать неделю';render();var nf=phone.querySelector('.ob [data-need]');if(nf&&nf.scrollIntoView)nf.scrollIntoView({block:'center'});obEdge();return}o.need=false;
+ if(o.method=='lmp'){l=o.lmp}
+ else{w=num(o.w);var dd=num(o.dd)||0;if(w==null){o.need=true;o.err='Укажите срок и дату УЗИ, чтобы посчитать неделю';return render()}l=addD(o.us,-Math.round(w*7+dd))}
  if(diffD(l,TODAY)>0){o.err='Дата не может быть в будущем';return render()}
  if(diffD(TODAY,l)>42*7){o.err='Проверьте дату: срок получился вне допустимых значений';return render()}
  D.lmp=l;D.method=o.method;o.err='';D.on=true;D.hint=o.fresh?0:-1;D.hChk=!!o.fresh;D.hProcWait=false;App.tab='home';App.stack=[];render()};
@@ -3429,7 +3438,7 @@ A.tog=function(p){set(p,!get(p));if(p=='ob.agree'){UI.ob.err='';UI.ob.need=false
 
 /* ===== События ===== */
 phone.addEventListener('click',function(e){var g=e.target.closest('[data-a]');if(!g||!phone.contains(g))return;if(g.disabled)return;var n=g.getAttribute('data-a');var on0=D.on,b0=recN();if(A[n])A[n](g.getAttribute('data-x'),g,e);if(on0)cpAfter(b0);cpSoftShow();hntCheck()});
-function bind(e){var t=e.target,p=t.getAttribute&&t.getAttribute('data-b');if(!p)return;set(p,t.value);if(/^sgg\./.test(p)){var sb=document.querySelector('[data-a=sgGSave]');if(sb)sb.disabled=!sgDirty()}if(t.getAttribute('data-live'))render()}
+function bind(e){var t=e.target,p=t.getAttribute&&t.getAttribute('data-b');if(!p)return;set(p,t.value);if(/^ob\.(lmp|w|dd|us)$/.test(p)){if(String(t.value).trim())t.removeAttribute('data-need');var gb=phone.querySelector('[data-a=ob2]');if(gb){var ok=obTermOk(UI.ob);gb.classList.toggle('obdis',!ok);if(ok)gb.removeAttribute('aria-disabled');else gb.setAttribute('aria-disabled','true')}}if(/^sgg\./.test(p)){var sb=document.querySelector('[data-a=sgGSave]');if(sb)sb.disabled=!sgDirty()}if(t.getAttribute('data-live'))render()}
 phone.addEventListener('input',function(e){if(e.target.tagName!='SELECT')bind(e)});
 phone.addEventListener('change',function(e){if(e.target.tagName=='SELECT')bind(e)});
 phone.addEventListener('keydown',function(e){var t=e.target;
